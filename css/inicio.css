@@ -1,0 +1,30 @@
+@import url(global.css);
+
+.containerInicio {
+    display: flex;
+    justify-content: center;
+    margin: 120px 0px;
+    gap: 100px;
+    border-left: 1px solid black;
+}
+
+.inicioContent{
+    margin-top: 100px;
+    max-width: 500px;
+}
+
+.inicioContent h1 {
+    font-family: "Poppins", sans-serif;
+    font-size: 55px;
+    margin: 20px 0px;
+}
+
+.inicio-texto {
+    color: #6C757D;
+    width: fit-content;
+    font-size: medium;
+}
+
+.position{
+    font-weight: 500;
+}
