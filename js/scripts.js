@@ -34,6 +34,9 @@ function loadHeader() {
                             <span>Posts</span>
                         </a>
                     </li>
+                    <li>
+                        <button id="theme-toggle">Modo Escuro</button>
+                    </li>
                 </ul>
             </nav>
         </header>
@@ -43,7 +46,6 @@ function loadHeader() {
     marcarPaginaAtiva();
 }
 
-// ===== LOAD FOOTER =====
 function loadFooter() {
     const footerHTML = `
         <footer>
@@ -83,27 +85,19 @@ function marcarPaginaAtiva() {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-    // 1. Pega o caminho da URL atual (ex: /sobre.html)
+
     const currentLocation = window.location.pathname;
-    
-    // 2. Seleciona todos os links do menu
+
     const menuItems = document.querySelectorAll('.nav-link');
 
-    // 3. Percorre cada link para verificar se corresponde à página atual
     menuItems.forEach(link => {
-      // Pega o valor do atributo href do link
+
       const linkPath = link.getAttribute('href');
 
-      // VERIFICAÇÃO:
-      // Se o href do link for igual à URL atual OU
-      // Se estamos na home ('/') e o link é para a home
       if (linkPath === currentLocation || (currentLocation === '/' && linkPath === '/')) {
         link.classList.add('active');
       }
-      
-      // TRUQUE EXTRA:
-      // Às vezes o caminho pode vir como "/sobre", mas o link é "/sobre.html".
-      // Se tiver problemas, use: if(currentLocation.includes(linkPath)) ...
+
     });
 });
 
