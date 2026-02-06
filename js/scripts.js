@@ -28,15 +28,6 @@ function loadHeader() {
                             <span>Projetos</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="posts.html" class="nav-link">
-                            <span class="material-symbols-outlined">article</span>
-                            <span>Posts</span>
-                        </a>
-                    </li>
-                    <li>
-                        <button id="theme-toggle">Modo Escuro</button>
-                    </li>
                 </ul>
             </nav>
         </header>
@@ -52,11 +43,11 @@ function loadFooter() {
             <div class="footer-content">
                 <p>© 2026 João Francisco. Todos os direitos reservados.</p>
                 <div class="social-links">
-                    <a href="https://github.com/seu-usuario" target="_blank" rel="noopener noreferrer">
+                    <a href="https://github.com/joaofr-tech" target="_blank" rel="noopener noreferrer">
                         <span class="material-symbols-outlined">code</span>
                         GitHub
                     </a>
-                    <a href="https://linkedin.com/in/seu-perfil" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.linkedin.com/in/jo%C3%A3o-francisco-ramos/" target="_blank" rel="noopener noreferrer">
                         <span class="material-symbols-outlined">work</span>
                         LinkedIn
                     </a>
