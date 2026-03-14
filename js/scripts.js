@@ -2,7 +2,7 @@ function loadHeader() {
     const headerHTML = `
         <header>
             <div class="logo">
-                <a href="inicio.html" class="logo">
+                <a href="index.html" class="logo">
                     <div class="logo-3d-simple">J</div>
                     <span>Francisco</span>
                 </a>
@@ -11,7 +11,7 @@ function loadHeader() {
             <nav class="navbar">
                 <ul>
                     <li>
-                        <a href="inicio.html" class="nav-link">
+                        <a href="index.html" class="nav-link">
                             <span class="material-symbols-outlined">home</span>
                             <span>Início</span>
                         </a>
