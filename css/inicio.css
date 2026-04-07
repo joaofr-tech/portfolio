@@ -1,14 +1,12 @@
-@import url(global.css);
-
-.containerInicio {
+﻿.containerInicio {
     display: flex;
     justify-content: center;
-    margin: 120px 0px;
+    margin: 120px 0;
     gap: 100px;
     border-left: 1px solid black;
 }
 
-.inicioContent{
+.inicioContent {
     margin-top: 100px;
     max-width: 500px;
 }
@@ -16,7 +14,7 @@
 .inicioContent h1 {
     font-family: "Poppins", sans-serif;
     font-size: 55px;
-    margin: 20px 0px;
+    margin: 20px 0;
 }
 
 .inicio-texto {
@@ -25,6 +23,6 @@
     font-size: medium;
 }
 
-.position{
+.position {
     font-weight: 500;
 }

@@ -1,0 +1,12 @@
+﻿.containerProjetos {
+    max-width: 1200px;
+    margin: 120px auto;
+    padding: 0 24px;
+    text-align: center;
+}
+
+.containerProjetos h2 {
+    font-family: "Poppins", sans-serif;
+    font-size: 40px;
+    color: #212529;
+}
