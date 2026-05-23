@@ -3,7 +3,7 @@
     justify-content: center;
     margin: 120px 0;
     gap: 100px;
-    border-left: 1px solid black;
+    border-left: 1px solid var(--heading-color);
 }
 
 .inicioContent {
@@ -15,14 +15,16 @@
     font-family: "Poppins", sans-serif;
     font-size: 55px;
     margin: 20px 0;
+    color: var(--heading-color);
 }
 
 .inicio-texto {
-    color: #6C757D;
+    color: var(--text-color);
     width: fit-content;
     font-size: medium;
 }
 
 .position {
     font-weight: 500;
+    color: var(--heading-color);
 }

@@ -13,21 +13,21 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    border: 1px solid #ced4da;
+    border: 1px solid var(--border-color);
     border-radius: 12px;
     padding: 6px 18px;
     margin-bottom: 26px;
-    background: #fff;
+    background: var(--surface-color);
 }
 
 .section-label p {
-    color: #000;
+    color: var(--heading-color);
     font-weight: 500;
     font-size: 15px;
 }
 
 .section-label .material-symbols-outlined {
-    color: #212529;
+    color: var(--heading-color);
     font-size: 20px;
 }
 
@@ -35,12 +35,12 @@
     font-family: "Poppins", sans-serif;
     font-size: 44px;
     line-height: 1.15;
-    color: #212529;
+    color: var(--heading-color);
     margin-bottom: 18px;
 }
 
 .projetos-hero > p {
-    color: #6C757D;
+    color: var(--text-color);
     font-size: 18px;
     line-height: 1.7;
 }
@@ -52,18 +52,18 @@
 }
 
 .projeto-card {
-    background: #fff;
-    border: 1px solid #d8efe3;
-    border-top: 4px solid #2f9e44;
+    background: var(--surface-color);
+    border: 1px solid var(--accent-border);
+    border-top: 4px solid var(--accent-color);
     border-radius: 16px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07);
+    box-shadow: 0 8px 24px var(--shadow-color);
     overflow: hidden;
     transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .projeto-card:hover {
-    border-color: #b7dfc7;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.09);
+    border-color: var(--accent-color);
+    box-shadow: 0 12px 30px var(--shadow-color);
     transform: translateY(-4px);
 }
 
@@ -73,8 +73,8 @@
     justify-content: space-between;
     gap: 16px;
     padding: 22px 28px;
-    border-bottom: 1px solid #e9ecef;
-    background: #f6fbf8;
+    border-bottom: 1px solid var(--border-color);
+    background: var(--accent-surface);
 }
 
 .projeto-meta-item {
@@ -88,7 +88,7 @@
 }
 
 .projeto-meta-label {
-    color: #6C757D;
+    color: var(--text-color);
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.04em;
@@ -107,14 +107,14 @@
 }
 
 .projeto-tipo {
-    background: #2f9e44;
+    background: var(--accent-color);
     color: #fff;
 }
 
 .projeto-status {
-    background: #e9f7ef;
-    color: #1f7a37;
-    border: 1px solid #c8ead4;
+    background: var(--accent-muted);
+    color: var(--accent-text);
+    border: 1px solid var(--accent-border);
 }
 
 .projeto-content {
@@ -123,7 +123,7 @@
 
 .projeto-content h2 {
     font-family: "Poppins", sans-serif;
-    color: #212529;
+    color: var(--heading-color);
     font-size: 28px;
     line-height: 1.25;
     margin-bottom: 14px;
@@ -131,9 +131,21 @@
 
 .projeto-content > p {
     max-width: 760px;
-    color: #6C757D;
+    color: var(--text-color);
     font-size: 16px;
     line-height: 1.7;
+}
+
+.projeto-content > .projeto-intencao {
+    margin-top: 18px;
+    padding: 12px 14px;
+    border-left: 4px solid var(--accent-color);
+    border-radius: 0 8px 8px 0;
+    background: var(--accent-surface);
+    color: var(--heading-color);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.5;
 }
 
 .projeto-detalhes {
@@ -151,9 +163,9 @@
     min-height: 64px;
     padding: 14px 0;
     background: transparent;
-    border-top: 1px solid #edf0f2;
+    border-top: 1px solid var(--border-color);
     border-radius: 0;
-    color: #343a40;
+    color: var(--heading-color);
     font-size: 14px;
     font-weight: 600;
     line-height: 1.35;
@@ -166,9 +178,9 @@
     justify-content: center;
     width: 34px;
     height: 34px;
-    background: #eef8f1;
+    background: var(--accent-muted);
     border-radius: 8px;
-    color: #2f9e44;
+    color: var(--accent-color);
     font-size: 21px;
 }
 
@@ -178,7 +190,7 @@
     justify-content: space-between;
     gap: 24px;
     padding: 22px 28px;
-    border-top: 1px solid #e9ecef;
+    border-top: 1px solid var(--border-color);
 }
 
 .tech-list {
@@ -192,12 +204,12 @@
     align-items: center;
     min-height: 28px;
     padding: 5px 10px;
-    border: 1px solid #d8efe3;
+    border: 1px solid var(--accent-border);
     border-radius: 999px;
-    color: #1f7a37;
+    color: var(--accent-text);
     font-size: 12px;
     font-weight: 700;
-    background: #f6fbf8;
+    background: var(--accent-surface);
 }
 
 .btn-repositorio {
@@ -208,8 +220,8 @@
     min-height: 44px;
     padding: 10px 20px;
     border-radius: 8px;
-    background: #000;
-    color: #fff;
+    background: var(--button-bg);
+    color: var(--button-text);
     text-decoration: none;
     font-size: 14px;
     font-weight: 700;
@@ -218,8 +230,8 @@
 }
 
 .btn-repositorio:hover {
-    background: #333;
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+    opacity: 0.88;
+    box-shadow: 0 6px 14px var(--shadow-color);
     transform: translateY(-2px);
 }
 
