@@ -68,6 +68,7 @@ function marcarPaginaAtiva() {
         const href = link.getAttribute('href');
         if (href === paginaAtual) {
             link.classList.add('active');
+            link.setAttribute('aria-current', 'page');
         }
     });
 }
