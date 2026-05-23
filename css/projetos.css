@@ -53,7 +53,8 @@
 
 .projeto-card {
     background: #fff;
-    border: 1px solid #e9ecef;
+    border: 1px solid #d8efe3;
+    border-top: 4px solid #2f9e44;
     border-radius: 16px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07);
     overflow: hidden;
@@ -61,7 +62,7 @@
 }
 
 .projeto-card:hover {
-    border-color: #d5d9dd;
+    border-color: #b7dfc7;
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.09);
     transform: translateY(-4px);
 }
@@ -73,7 +74,7 @@
     gap: 16px;
     padding: 22px 28px;
     border-bottom: 1px solid #e9ecef;
-    background: #fbfbfc;
+    background: #f6fbf8;
 }
 
 .projeto-tipo,
@@ -88,7 +89,7 @@
 }
 
 .projeto-tipo {
-    background: #212529;
+    background: #2f9e44;
     color: #fff;
 }
 
