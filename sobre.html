@@ -6,7 +6,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/sobre.css">
-    <title>Site Sobre</title>
+    <title>Sobre | João Francisco</title>
 </head>
 <body>
 
@@ -15,19 +15,19 @@
             <div class="sobreContent">
                 <div class="sobre">
                     <span class="material-symbols-outlined">person</span>
-                    <p>Sobre João Francisco</p>
+                    <p data-i18n="about_label">Sobre João Francisco</p>
                 </div>
 
-                <p class="textoSobre">Olá! Eu sou o João Francisco Ramos Murilo. Comecei no mundo da tecnologia em 2025, atualmente estou cursando Engenharia de Software na PUC Minas (Coração Eucarístico).<br><br>Paralelamente à graduação, busco evolução contínua por meio de cursos e projetos práticos. Concluí formações como CS50's Introduction to Computer Science (Harvard), 100% em inglês.<br><br>Aplico esses conhecimentos em projetos práticos usando boas práticas de testes, documentação e integração com ferramentas de DevOps.</p>
+                <p class="textoSobre" data-i18n-html="about_text">Olá! Eu sou o João Francisco Ramos Murilo. Comecei no mundo da tecnologia em 2025, atualmente estou cursando Engenharia de Software na PUC Minas (Coração Eucarístico).<br><br>Paralelamente à graduação, busco evolução contínua por meio de cursos e projetos práticos. Concluí formações como CS50's Introduction to Computer Science (Harvard), 100% em inglês.<br><br>Aplico esses conhecimentos em projetos práticos usando boas práticas de testes, documentação e integração com ferramentas de DevOps.</p>
             </div>
 
             <div class="foto">
-                <img src="assets/profile3-semfundo.png" alt="Foto de perfil de João Francisco">
+                <img src="assets/profile3-semfundo.png" alt="Foto de perfil de João Francisco" data-i18n-alt="profile_alt">
             </div>
         </div>
 
         <section class="certificados-section">
-            <h2>Certificações</h2>
+            <h2 data-i18n="certifications_title">Certificações</h2>
             <div class="certificados-grid">
 
                 <div class="certificado-card">
@@ -35,7 +35,7 @@
                     <h3>CS50's Introduction to Computer Science</h3>
                     <p class="instituicao">Harvard University</p>
                     <p class="ano">2025</p>
-                    <a href="assets/CS50x-cetified.pdf" class="btn-verificar" target="_blank" rel="noopener noreferrer">Verificar Certificado</a>
+                    <a href="assets/CS50x-cetified.pdf" class="btn-verificar" target="_blank" rel="noopener noreferrer" data-i18n="verify_certificate">Verificar Certificado</a>
                 </div>
 
                 <div class="certificado-card">
@@ -43,7 +43,7 @@
                     <h3>EF SET English Certificate 62/100 (C1 Advanced)</h3>
                     <p class="instituicao">EF SET</p>
                     <p class="ano">2026</p>
-                    <a href="https://cert.efset.org/en/ZTsv7T" class="btn-verificar" target="_blank" rel="noopener noreferrer">Verificar Certificado</a>
+                    <a href="https://cert.efset.org/en/ZTsv7T" class="btn-verificar" target="_blank" rel="noopener noreferrer" data-i18n="verify_certificate">Verificar Certificado</a>
                 </div>
 
             </div>
@@ -51,5 +51,6 @@
     </main>
 
     <script src="js/scripts.js"></script>
+    <script src="js/i18n.js"></script>
 </body>
 </html>

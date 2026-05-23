@@ -1,37 +1,41 @@
 ﻿function loadHeader() {
     const headerHTML = `
         <header>
-            <a href="index.html" class="logo" aria-label="Ir para a página inicial">
+            <a href="index.html" class="logo" aria-label="Ir para a página inicial" data-i18n-aria-label="logo_label">
                 <div class="logo-3d-simple">J</div>
                 <span>Francisco</span>
             </a>
 
-            <nav class="navbar" aria-label="Navegação principal">
+            <nav class="navbar" aria-label="Navegação principal" data-i18n-aria-label="nav_label">
                 <ul>
                     <li>
                         <a href="index.html" class="nav-link">
                             <span class="material-symbols-outlined" aria-hidden="true">home</span>
-                            <span>Início</span>
+                            <span data-i18n="nav_home">Início</span>
                         </a>
                     </li>
                     <li>
                         <a href="sobre.html" class="nav-link">
                             <span class="material-symbols-outlined" aria-hidden="true">person</span>
-                            <span>Sobre</span>
+                            <span data-i18n="nav_about">Sobre</span>
                         </a>
                     </li>
                     <li>
                         <a href="projetos.html" class="nav-link">
                             <span class="material-symbols-outlined" aria-hidden="true">folder_open</span>
-                            <span>Projetos</span>
+                            <span data-i18n="nav_projects">Projetos</span>
                         </a>
                     </li>
                 </ul>
             </nav>
 
-            <button id="theme-toggle" type="button" aria-label="Alternar tema">
-                <span class="material-symbols-outlined" aria-hidden="true">dark_mode</span>
-            </button>
+            <div class="header-actions">
+                <button id="language-toggle" type="button" aria-label="Mudar idioma para inglês" title="Mudar idioma para inglês">EN</button>
+
+                <button id="theme-toggle" type="button" aria-label="Alternar tema">
+                    <span class="material-symbols-outlined" aria-hidden="true">dark_mode</span>
+                </button>
+            </div>
         </header>
     `;
 
@@ -42,7 +46,7 @@ function loadFooter() {
     const footerHTML = `
         <footer>
             <div class="footer-content">
-                <p>© 2026 João Francisco. Todos os direitos reservados.</p>
+                <p data-i18n="footer_rights">© 2026 João Francisco. Todos os direitos reservados.</p>
                 <div class="social-links">
                     <a href="https://github.com/joaofr-tech" target="_blank" rel="noopener noreferrer">
                         <span class="material-symbols-outlined" aria-hidden="true">code</span>
@@ -54,7 +58,7 @@ function loadFooter() {
                     </a>
                     <a href="assets/CV.pdf" target="_blank" rel="noopener noreferrer">
                         <span class="material-symbols-outlined" aria-hidden="true">description</span>
-                        Curriculo
+                        <span data-i18n="footer_cv">Currículo</span>
                     </a>
                 </div>
             </div>
@@ -90,13 +94,18 @@ function atualizarBotaoTema() {
     const themeToggle = document.querySelector('#theme-toggle');
     const themeIcon = themeToggle?.querySelector('.material-symbols-outlined');
     const darkAtivo = document.body.classList.contains('darkmode');
+    const idiomaAtual = localStorage.getItem('idioma') || 'pt';
+    const dicionario = typeof translations !== 'undefined' ? translations[idiomaAtual] || translations.pt : null;
 
     if (!themeToggle || !themeIcon) {
         return;
     }
 
     themeIcon.textContent = darkAtivo ? 'light_mode' : 'dark_mode';
-    themeToggle.setAttribute('aria-label', darkAtivo ? 'Ativar tema claro' : 'Ativar tema escuro');
+    themeToggle.setAttribute(
+        'aria-label',
+        dicionario ? dicionario[darkAtivo ? 'theme_light' : 'theme_dark'] : darkAtivo ? 'Ativar tema claro' : 'Ativar tema escuro'
+    );
 }
 
 function configurarTema() {
