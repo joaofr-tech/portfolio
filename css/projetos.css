@@ -117,6 +117,18 @@
     border: 1px solid var(--accent-border);
 }
 
+.projeto-status--progress {
+    background: #fff4de;
+    color: #8a4b00;
+    border-color: #f3c76d;
+}
+
+body.darkmode .projeto-status--progress {
+    background: #2f2412;
+    color: #ffd48a;
+    border-color: #7a5418;
+}
+
 .projeto-content {
     padding: 30px 28px 26px;
 }

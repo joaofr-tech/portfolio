@@ -23,7 +23,14 @@ const translations = {
         projects_list_label: 'Lista de projetos',
         tech_list_label: 'Tecnologias utilizadas',
         project_status_done: 'Concluído',
+        project_status_progress: 'Em andamento',
         view_repository: 'Ver repositório',
+        payment_title: 'Pagamento Simplificado',
+        payment_description: 'API REST em Java com Spring Boot para simular um sistema de pagamentos simplificado entre usuários comuns e lojistas.',
+        payment_goal: 'Projeto em desenvolvimento para praticar regras de negócio, persistência com JPA, validações de transferência e integração com serviços externos.',
+        payment_detail_transfer: 'Transferências entre usuários',
+        payment_detail_balance: 'Validação de saldo e perfil lojista',
+        payment_detail_authorization: 'Autorização externa de transações',
         sf_title: 'Aplicação de Consulta de API Externa',
         sf_description: 'API em Java com Spring Boot para consultar filmes gravados em San Francisco, consumindo dados públicos do portal SF Open Data.',
         sf_goal: 'Projeto criado para praticar consumo de API externa, criação de endpoints REST e organização de uma aplicação Spring Boot.',
@@ -67,7 +74,14 @@ const translations = {
         projects_list_label: 'Project list',
         tech_list_label: 'Technologies used',
         project_status_done: 'Completed',
+        project_status_progress: 'In progress',
         view_repository: 'View repository',
+        payment_title: 'Simplified Payment',
+        payment_description: 'Java and Spring Boot REST API that simulates a simplified payment system between regular users and merchants.',
+        payment_goal: 'Work-in-progress project created to practice business rules, JPA persistence, transfer validation, and integration with external services.',
+        payment_detail_transfer: 'Transfers between users',
+        payment_detail_balance: 'Balance and merchant profile validation',
+        payment_detail_authorization: 'External transaction authorization',
         sf_title: 'External API Query Application',
         sf_description: 'Java and Spring Boot API for searching movies filmed in San Francisco, consuming public data from the SF Open Data portal.',
         sf_goal: 'Project created to practice external API consumption, REST endpoint creation, and Spring Boot application organization.',
@@ -89,8 +103,16 @@ const translations = {
     }
 };
 
+function normalizeLanguage(language) {
+    if (language === 'us' || language === 'en-US') {
+        return 'en';
+    }
+
+    return language;
+}
+
 function getSavedLanguage() {
-    return localStorage.getItem('idioma') || 'pt';
+    return normalizeLanguage(localStorage.getItem('idioma') || 'pt');
 }
 
 function getPageTitleKey() {
@@ -143,10 +165,11 @@ function updateLanguageButton(language, dictionary) {
 }
 
 function applyTranslations(language = getSavedLanguage()) {
-    const activeLanguage = translations[language] ? language : 'pt';
+    const normalizedLanguage = normalizeLanguage(language);
+    const activeLanguage = translations[normalizedLanguage] ? normalizedLanguage : 'pt';
     const dictionary = translations[activeLanguage];
 
-    document.documentElement.lang = activeLanguage === 'pt' ? 'pt-BR' : 'en';
+    document.documentElement.lang = activeLanguage === 'pt' ? 'pt-BR' : 'en-US';
     document.title = dictionary[getPageTitleKey()];
 
     document.querySelectorAll('[data-i18n], [data-i18n-html], [data-i18n-aria-label], [data-i18n-alt]').forEach((element) => {
