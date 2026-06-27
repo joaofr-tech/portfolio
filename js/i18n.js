@@ -24,22 +24,7 @@ const translations = {
         tech_list_label: 'Tecnologias utilizadas',
         project_status_done: 'Concluído',
         project_status_progress: 'Em andamento',
-        view_repository: 'Ver repositório',
-        mastersys_title: 'Master Sis',
-        mastersys_description: 'API REST em Java com Spring Boot para gestão de academias de artes marciais, incluindo alunos, modalidades, planos, matrículas e faturamento.',
-        mastersys_goal: 'Aprendizado: modelagem relacional, migrations com Flyway, persistência com PostgreSQL e organização de um domínio de negócio real.',
-        payment_title: 'Pagamento Simplificado',
-        payment_description: 'API REST em Java com Spring Boot para simular um sistema de pagamentos simplificado entre usuários comuns e lojistas.',
-        payment_goal: 'Aprendizado: modelagem de domínio, validações transacionais, persistência com JPA e integração com serviços externos.',
-        sf_title: 'Aplicação de Consulta de API Externa',
-        sf_description: 'API em Java com Spring Boot para consultar filmes gravados em San Francisco, consumindo dados públicos do portal SF Open Data.',
-        sf_goal: 'Aprendizado: consumo de API externa, criação de endpoints REST, filtros de busca e organização de uma aplicação Spring Boot.',
-        cnab_title: 'API Leitor de Arquivo CNAB',
-        cnab_description: 'Importação, processamento e persistência de transações financeiras a partir de arquivos CNAB, com foco em organização de camadas e integração com banco de dados.',
-        cnab_goal: 'Aprendizado: leitura de arquivos texto, separação de responsabilidades, persistência em banco e estruturação em camadas.',
-        chat_title: 'Chat em Tempo Real',
-        chat_description: 'Implementação de um chat em tempo real com Spring Boot e WebSocket, permitindo troca instantânea de mensagens entre clientes por meio de uma conexão persistente.',
-        chat_goal: 'Aprendizado: comunicação em tempo real, fluxo de mensagens, conexões persistentes e integração com WebSocket no Spring.'
+        view_repository: 'Ver repositório'
     },
     en: {
         page_title_index: 'Home | João Francisco',
@@ -66,22 +51,7 @@ const translations = {
         tech_list_label: 'Technologies used',
         project_status_done: 'Completed',
         project_status_progress: 'In progress',
-        view_repository: 'View repository',
-        mastersys_title: 'Master Sis',
-        mastersys_description: 'Java and Spring Boot REST API for martial arts academy management, including students, modalities, plans, enrollments, and billing.',
-        mastersys_goal: 'Learning: relational modeling, Flyway migrations, PostgreSQL persistence, and organization of a real business domain.',
-        payment_title: 'Simplified Payment',
-        payment_description: 'Java and Spring Boot REST API that simulates a simplified payment system between regular users and merchants.',
-        payment_goal: 'Learning: domain modeling, transactional validation, JPA persistence, and integration with external services.',
-        sf_title: 'External API Query Application',
-        sf_description: 'Java and Spring Boot API for searching movies filmed in San Francisco, consuming public data from the SF Open Data portal.',
-        sf_goal: 'Learning: external API consumption, REST endpoint creation, search filters, and Spring Boot application organization.',
-        cnab_title: 'CNAB File Reader API',
-        cnab_description: 'Import, processing, and persistence of financial transactions from CNAB files, focused on layered organization and database integration.',
-        cnab_goal: 'Learning: text file reading, responsibility separation, database persistence, and layered application structure.',
-        chat_title: 'Real-Time Chat',
-        chat_description: 'Real-time chat implementation with Spring Boot and WebSocket, allowing instant message exchange between clients through a persistent connection.',
-        chat_goal: 'Learning: real-time communication, message flow, persistent connections, and WebSocket integration in Spring.'
+        view_repository: 'View repository'
     }
 };
 
@@ -167,6 +137,11 @@ function applyTranslations(language = getSavedLanguage()) {
     });
 
     localStorage.setItem('idioma', activeLanguage);
+
+    if (typeof renderProjects === 'function') {
+        renderProjects(activeLanguage);
+    }
+
     updateLanguageButton(activeLanguage, dictionary);
 
     if (typeof atualizarBotaoTema === 'function') {
