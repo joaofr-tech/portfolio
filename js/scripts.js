@@ -56,7 +56,7 @@ function loadFooter() {
                         <span class="material-symbols-outlined" aria-hidden="true">work</span>
                         LinkedIn
                     </a>
-                    <a href="assets/CV.pdf" target="_blank" rel="noopener noreferrer">
+                    <a href="assets/joao_cv.pdf" target="_blank" rel="noopener noreferrer">
                         <span class="material-symbols-outlined" aria-hidden="true">description</span>
                         <span data-i18n="footer_cv">Currículo</span>
                     </a>
