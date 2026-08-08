@@ -3,28 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="assets/favicon.ico" sizes="any">
-    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+    <title>Portfólio | João Francisco</title>
+    <link rel="icon" href="%BASE_URL%assets/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="%BASE_URL%assets/apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/inicio.css">
-    <title>Início | João Francisco</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-
-    <main class="containerInicio">
-        <div class="inicioContent">
-            <p class="position" data-i18n="home_position">DESENVOLVEDOR & ESTUDANTE</p>
-            <h1>João Francisco</h1>
-            <p class="inicio-texto" data-i18n="home_intro">Foco em backend com Java e Spring Boot. Construção de projetos práticos e compartilhamento da jornada de aprendizado via posts no LinkedIn.</p>
-        </div>
-
-        <div class="foto">
-            <img src="assets/profile3-semfundo.png" alt="Foto de perfil de João Francisco" data-i18n-alt="profile_alt">
-        </div>
-    </main>
-
-    <script src="js/scripts.js"></script>
-    <script src="js/i18n.js"></script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
 </body>
 </html>
