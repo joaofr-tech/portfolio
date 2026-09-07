@@ -1,5 +1,6 @@
 import { asset } from '../paths'
 import Projects from './Projects'
+import Articles from '../components/Articles'
 
 const certifications = [
   {
@@ -23,14 +24,18 @@ export default function Profile() {
     <main>
       <section id="sobre" className="containerSobre">
         <div className="perfilContent">
-          <p className="position">DESENVOLVEDOR FULLSTACK &amp; ESTUDANTE DE ENGENHARIA DE SOFTWARE</p>
+          <p className="position">DESENVOLVEDOR FULLSTACK</p>
           <h1>João Francisco</h1>
           <p className="perfil-resumo">
-            Java e SpringBoot, JavaScript e React
+            <span>Java &amp; Spring Boot</span>
+            <span className="dot">•</span>
+            <span>React &amp; JavaScript</span>
+            <span className="dot">•</span>
+            <span>Dados &amp; IA</span>
           </p>
           <div className="perfil-biografia">
             <p>
-              Comecei no mundo da tecnologia em 2025, atualmente estou cursando Engenharia de Software na PUC Minas (Coração Eucarístico). Busco sempre melhorar por meio de cursos e projetos práticos.
+              Estudante de Engenharia de Software na PUC Minas. Construo aplicações completas com Spring Boot e React, aliando uma base sólida de backend ao interesse contínuo por engenharia de dados e aplicações práticas com IA.
             </p>
           </div>
         </div>
@@ -40,24 +45,44 @@ export default function Profile() {
         </div>
       </section>
 
+      <Projects />
+
+      <Articles />
+
       <section id="certificados" className="certificados-section">
-        <h2>Certificações</h2>
-        <div className="certificados-grid">
+        <div className="certificados-hero">
+          <div className="section-label">
+            <span className="material-symbols-outlined" aria-hidden="true">workspace_premium</span>
+            <p>Certificações</p>
+          </div>
+        </div>
+
+        <div className="certificados-grid" aria-label="Lista de certificações">
           {certifications.map((cert) => (
-            <div className="certificado-card" key={cert.title}>
-              <div className="cert-icon" aria-hidden="true">{cert.icon}</div>
-              <h3>{cert.title}</h3>
-              <p className="instituicao">{cert.institution}</p>
-              <p className="ano">{cert.year}</p>
-              <a href={cert.link} className="btn-verificar" target="_blank" rel="noopener noreferrer">
-                Verificar certificado
-              </a>
-            </div>
+            <article className="certificado-card" key={cert.title}>
+              <div className="certificado-header">
+                <div className="cert-icon" aria-hidden="true">{cert.icon}</div>
+                <span className="ano">{cert.year}</span>
+              </div>
+              <div className="certificado-content">
+                <h3>{cert.title}</h3>
+                <p className="instituicao">{cert.institution}</p>
+              </div>
+              <div className="certificado-actions">
+                <a
+                  href={cert.link}
+                  className="btn-action btn-secondary"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span className="material-symbols-outlined" aria-hidden="true">open_in_new</span>
+                  <span>Verificar certificado</span>
+                </a>
+              </div>
+            </article>
           ))}
         </div>
       </section>
-
-      <Projects />
     </main>
   )
 }

@@ -1,40 +1,34 @@
 interface Project {
   title: string
-  description: string
-  repository: string
-  techs: string[]
+  tags: string[]
+  impactDescription: string
+  githubUrl: string
+  liveUrl?: string
 }
 
 const projects: Project[] = [
   {
-    title: 'Master Sis',
-    description: 'API para gerenciar alunos, planos, matrículas e faturamento de academias de artes marciais.',
-    repository: 'https://github.com/joaofr-tech/mastersys-spring-api',
-    techs: ['Java', 'Spring Boot', 'PostgreSQL', 'Validation', 'Flyway'],
+    title: 'Pipeline ETL com Arquitetura Medalhão e Enriquecimento de Dados',
+    tags: ['Engenharia de Dados', 'Python', 'PostgreSQL', 'Docker'],
+    impactDescription:
+      'Arquitetura em três camadas (Bronze, Silver e Gold) para processamento e enriquecimento de cadastros via API pública. Converte dados brutos para Parquet otimizado e popula banco PostgreSQL em Docker para análise relacional no DBeaver.',
+    githubUrl: 'https://github.com/joaofr-tech/ETL-medalion-architecture',
   },
   {
-    title: 'Pagamento Simplificado',
-    description: 'Sistema de pagamentos entre usuários e lojistas, com validações transacionais e persistência de dados.',
-    repository: 'https://github.com/joaofr-tech/pagamento-simplificado/tree/main',
-    techs: ['Java', 'Spring Boot', 'H2'],
+    title: 'Album26 — Controle da Copa do Mundo 2026',
+    tags: ['Frontend', 'PWA / Mobile', 'Vanilla JS', 'Cloudflare Workers'],
+    impactDescription:
+      'PWA mobile-first e offline para controle da coleção de figurinhas da Copa do Mundo 2026. Conta com registro por voz e ditado natural, conferência inteligente de listas do WhatsApp e persistência local segura (sem backend).',
+    githubUrl: 'https://github.com/joaofr-tech/Album26',
+    liveUrl: 'https://pwa-album-copa-sdd.jf756061.workers.dev',
   },
   {
-    title: 'Aplicação de Consulta de API Externa',
-    description: 'API para consultar filmes gravados em San Francisco usando dados públicos do SF Open Data.',
-    repository: 'https://github.com/joaofr-tech/SF-movies-api',
-    techs: ['Java', 'Spring Boot', 'WebClient'],
-  },
-  {
-    title: 'API Leitor de Arquivo CNAB',
-    description: 'API para importar, processar e persistir transações financeiras extraídas de arquivos CNAB.',
-    repository: 'https://github.com/joaofr-tech/api-cnab-file-reader',
-    techs: ['Java', 'Spring Boot', 'PostgreSQL'],
-  },
-  {
-    title: 'Chat em Tempo Real',
-    description: 'Chat em tempo real com conexão persistente e troca instantânea de mensagens via WebSocket.',
-    repository: 'https://github.com/joaofr-tech/chat-em-tempo-real',
-    techs: ['Java', 'Spring Boot', 'WebSocket', 'STOMP'],
+    title: 'Habitus — Consolidação de Hábitos e Metas',
+    tags: ['Frontend', 'React', 'TypeScript', 'Cloudflare Pages'],
+    impactDescription:
+      'Aplicação web minimalista para calcular e acompanhar a consistência de hábitos e metas pessoais. Permite registros por oportunidade, métricas de adesão e persistência 100% local via localStorage.',
+    githubUrl: 'https://github.com/joaofr-tech/kpi-habits',
+    liveUrl: 'https://kpi-habits.jf756061.workers.dev/',
   },
 ]
 
@@ -50,22 +44,42 @@ export default function Projects() {
 
       <section className="projetos-grid" aria-label="Lista de projetos">
         {projects.map(project => (
-          <article className="projeto-card" key={project.repository}>
+          <article className="projeto-card" key={project.title}>
             <div className="projeto-content">
               <h2>{project.title}</h2>
-              <p>{project.description}</p>
-            </div>
-
-            <div className="projeto-actions">
-              <div className="tech-list" aria-label="Tecnologias utilizadas">
-                {project.techs.map(tech => (
-                  <span key={tech}>{tech}</span>
+              <div className="projeto-tags" aria-label="Tecnologias e especialidades">
+                {project.tags.map((tag, index) => (
+                  <span key={tag} className="tag-item">
+                    {tag}
+                    {index < project.tags.length - 1 && (
+                      <span className="tag-separator" aria-hidden="true">•</span>
+                    )}
+                  </span>
                 ))}
               </div>
-              <a href={project.repository} className="btn-repositorio" target="_blank" rel="noopener noreferrer">
+              <p className="projeto-descricao">{project.impactDescription}</p>
+            </div>
+
+            <div className="projeto-actions" aria-label="Ações do projeto">
+              {project.liveUrl && (
+                <a
+                  href={project.liveUrl}
+                  className="btn-action btn-primary"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span className="material-symbols-outlined" aria-hidden="true">open_in_new</span>
+                  <span>Live Demo</span>
+                </a>
+              )}
+              <a
+                href={project.githubUrl}
+                className={`btn-action ${project.liveUrl ? 'btn-secondary' : 'btn-primary'}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <span className="material-symbols-outlined" aria-hidden="true">code</span>
-                <span>Ver repositório</span>
-                <span className="material-symbols-outlined link-arrow" aria-hidden="true">arrow_outward</span>
+                <span>Código no GitHub</span>
               </a>
             </div>
           </article>

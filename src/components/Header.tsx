@@ -3,8 +3,9 @@ import { useTheme } from '../theme'
 
 const navItems = [
   { id: 'sobre', label: 'Sobre' },
-  { id: 'certificados', label: 'Certificados' },
   { id: 'projetos', label: 'Projetos' },
+  { id: 'artigos', label: 'Artigos' },
+  { id: 'certificados', label: 'Certificados' },
 ]
 
 export function Header() {
@@ -12,7 +13,7 @@ export function Header() {
   const [activeSection, setActiveSection] = useState('sobre')
 
   useEffect(() => {
-    const sections = ['sobre', 'certificados', 'projetos']
+    const sections = ['sobre', 'projetos', 'artigos', 'certificados']
       .map(id => document.getElementById(id))
       .filter((section): section is HTMLElement => Boolean(section))
 
@@ -31,9 +32,29 @@ export function Header() {
     return () => observer.disconnect()
   }, [])
 
+  const handleNavClick = (id: string) => {
+    setActiveSection(id)
+    if (window.location.hash.startsWith('#/artigo/')) {
+      window.location.hash = `#${id}`
+      setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+      }, 50)
+    }
+  }
+
+  const handleLogoClick = () => {
+    setActiveSection('sobre')
+    if (window.location.hash.startsWith('#/artigo/')) {
+      window.location.hash = '#sobre'
+      setTimeout(() => {
+        document.getElementById('sobre')?.scrollIntoView({ behavior: 'smooth' })
+      }, 50)
+    }
+  }
+
   return (
     <header className="site-header">
-      <a href="#sobre" className="logo" aria-label="Ir para o perfil">
+      <a href="#sobre" className="logo" aria-label="Ir para o perfil" onClick={handleLogoClick}>
         <span className="logo-mark" aria-hidden="true">JF</span>
         <span className="logo-name">João Francisco</span>
       </a>
@@ -46,7 +67,7 @@ export function Header() {
                 href={`#${item.id}`}
                 className={`nav-link${activeSection === item.id ? ' active' : ''}`}
                 aria-current={activeSection === item.id ? 'location' : undefined}
-                onClick={() => setActiveSection(item.id)}
+                onClick={() => handleNavClick(item.id)}
               >
                 {item.label}
               </a>

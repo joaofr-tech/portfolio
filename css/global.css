@@ -22,6 +22,12 @@
     --header-active-text: #FFFFFF;
     --header-focus: #3B3B3B;
     --header-shadow: rgba(0, 0, 0, 0.1);
+    --sobre-text: #334155;
+    --sobre-heading: #0f172a;
+    --sobre-muted: #64748b;
+    --sobre-divider: #cbd5e1;
+    --foto-bg: radial-gradient(circle, #e2e8f0 0%, #cbd5e1 100%);
+    --foto-shadow: 0 10px 30px rgba(0, 0, 0, 0.14);
 }
 
 .darkmode {
@@ -48,6 +54,12 @@
     --header-active-text: #111111;
     --header-focus: #D6D6D6;
     --header-shadow: rgba(0, 0, 0, 0.28);
+    --sobre-text: #e2e8f0;
+    --sobre-heading: #ffffff;
+    --sobre-muted: #94a3b8;
+    --sobre-divider: #475569;
+    --foto-bg: radial-gradient(circle, #252b36 0%, #171a21 100%);
+    --foto-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 html {
