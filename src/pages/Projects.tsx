@@ -8,6 +8,20 @@ interface Project {
 
 const projects: Project[] = [
   {
+    title: 'Cloud Data Pipeline: Arquitetura Medalhão com Azure e Python',
+    tags: ['Engenharia de Dados', 'Azure Blob Storage', 'Python', 'Pandas & Parquet', 'SQL'],
+    impactDescription:
+      'Pipeline de dados ponta a ponta implementando a Arquitetura Medalhão (Bronze, Silver e Gold). Extrai cotações cambiais em tempo real via API REST, armazena payloads brutos particionados no Azure Blob Storage, limpa e converte para Parquet colunar e ingere em banco SQL analítico com consultas para médias móveis e métricas de volatilidade.',
+    githubUrl: 'https://github.com/joaofr-tech/cloud-data-pipeline-azure',
+  },
+  {
+    title: 'Movie App — Catálogo e Busca de Filmes com TMDB',
+    tags: ['Frontend', 'React 19', 'Vite', 'TMDB API', 'Context API'],
+    impactDescription:
+      'Aplicação web moderna e responsiva para exploração e busca de filmes em tempo real integrada à API TMDB. Conta com gerenciamento de estado global, persistência de favoritos no localStorage com feedback visual e interface Dark Mode adaptada para múltiplos dispositivos.',
+    githubUrl: 'https://github.com/joaofr-tech/movie-react-app',
+  },
+  {
     title: 'Pipeline ETL com Arquitetura Medalhão e Enriquecimento de Dados',
     tags: ['Engenharia de Dados', 'Python', 'PostgreSQL', 'Docker'],
     impactDescription:
