@@ -12,6 +12,16 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'construindo-agente-ia-local-pydanticai-ollama',
+    title: 'Construindo um Agente de IA 100% Local com PydanticAI e Ollama',
+    summary:
+      'Guia prático para criar um agente autônomo rodando 100% localmente com Ollama e PydanticAI, integrando modelo, system prompt e ferramentas sem custos de API.',
+    readTime: '3 min de leitura',
+    date: 'Setembro de 2026',
+    author: 'João Francisco',
+    coverImage: asset('local-ai-agent-cover.jpg'),
+  },
+  {
     slug: 'como-usar-claude-code-gratuitamente',
     title: 'Como eu uso o Claude Code gratuitamente?',
     summary:
