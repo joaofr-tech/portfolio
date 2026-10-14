@@ -8,6 +8,13 @@ interface Project {
 
 const projects: Project[] = [
   {
+    title: 'EstágioBot AI — Agente Autônomo para Busca de Vagas',
+    tags: ['Agentes de IA', 'Google Antigravity CLI', 'Node.js', 'React', 'PowerShell'],
+    impactDescription:
+      'Agente autônomo baseado no Google Antigravity CLI que realiza buscas contínuas por vagas de estágio em Engenharia de Software, Dados e Inteligência Artificial. Filtra automaticamente oportunidades compatíveis com turno matutino, alimenta um dashboard local minimalista com auditoria e métricas de varredura, e dispara notificações por e-mail em React sempre que novas vagas são encontradas.',
+    githubUrl: 'https://github.com/joaofr-tech/estagio-bot-ai',
+  },
+  {
     title: 'Cloud Data Pipeline: Arquitetura Medalhão com Azure e Python',
     tags: ['Engenharia de Dados', 'Azure Blob Storage', 'Python', 'Pandas & Parquet', 'SQL'],
     impactDescription:
