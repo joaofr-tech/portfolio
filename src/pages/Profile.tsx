@@ -1,7 +1,6 @@
 import type { ReactNode } from 'react'
 import { asset } from '../paths'
-import Projects from './Projects'
-import Articles from '../components/Articles'
+import { articles } from '../data/articles'
 
 function ClaudeIcon() {
   return (
@@ -46,70 +45,337 @@ const certifications: Certification[] = [
   },
 ]
 
+interface Project {
+  title: string
+  tags: string[]
+  impactDescription: string
+  githubUrl: string
+  liveUrl?: string
+}
+
+const secondaryProjects: Project[] = [
+  {
+    title: 'Cloud Data Pipeline: Arquitetura Medalhão com Azure e Python',
+    tags: ['Engenharia de Dados', 'Azure Blob Storage', 'Python', 'Pandas & Parquet', 'SQL'],
+    impactDescription:
+      'Pipeline de dados ponta a ponta implementando a Arquitetura Medalhão (Bronze, Silver e Gold). Extrai cotações cambiais em tempo real via API REST, armazena payloads brutos particionados no Azure Blob Storage, limpa e converte para Parquet colunar e ingere em banco SQL analítico com consultas para médias móveis e métricas de volatilidade.',
+    githubUrl: 'https://github.com/joaofr-tech/cloud-data-pipeline-azure',
+  },
+  {
+    title: 'Movie App — Catálogo e Busca de Filmes com TMDB',
+    tags: ['Frontend', 'React 19', 'Vite', 'TMDB API', 'Context API'],
+    impactDescription:
+      'Aplicação web moderna e responsiva para exploração e busca de filmes em tempo real integrada à API TMDB. Conta com gerenciamento de estado global, persistência de favoritos no localStorage com feedback visual e interface Dark Mode adaptada para múltiplos dispositivos.',
+    githubUrl: 'https://github.com/joaofr-tech/movie-react-app',
+  },
+  {
+    title: 'Pipeline ETL com Arquitetura Medalhão e Enriquecimento de Dados',
+    tags: ['Engenharia de Dados', 'Python', 'PostgreSQL', 'Docker'],
+    impactDescription:
+      'Arquitetura em três camadas (Bronze, Silver e Gold) para processamento e enriquecimento de cadastros via API pública. Converte dados brutos para Parquet otimizado e popula banco PostgreSQL em Docker para análise relacional no DBeaver.',
+    githubUrl: 'https://github.com/joaofr-tech/ETL-medalion-architecture',
+  },
+  {
+    title: 'Album26 — Controle da Copa do Mundo 2026',
+    tags: ['Frontend', 'PWA / Mobile', 'Vanilla JS', 'Cloudflare Workers'],
+    impactDescription:
+      'PWA mobile-first e offline para controle da coleção de figurinhas da Copa do Mundo 2026. Conta com registro por voz e ditado natural, conferência inteligente de listas do WhatsApp e persistência local segura (sem backend).',
+    githubUrl: 'https://github.com/joaofr-tech/Album26',
+    liveUrl: 'https://pwa-album-copa-sdd.jf756061.workers.dev',
+  },
+  {
+    title: 'Habitus — Consolidação de Hábitos e Metas',
+    tags: ['Frontend', 'React', 'TypeScript', 'Cloudflare Pages'],
+    impactDescription:
+      'Aplicação web minimalista para calcular e acompanhar a consistência de hábitos e metas pessoais. Permite registros por oportunidade, métricas de adesão e persistência 100% local via localStorage.',
+    githubUrl: 'https://github.com/joaofr-tech/kpi-habits',
+    liveUrl: 'https://kpi-habits.jf756061.workers.dev/',
+  },
+]
+
 export default function Profile() {
   return (
-    <main>
-      <section id="sobre" className="containerSobre">
-        <div className="perfilContent">
-          <p className="position">DESENVOLVEDOR FULLSTACK</p>
-          <h1>João Francisco</h1>
-          <p className="perfil-resumo">
-            <span>Java &amp; Spring Boot</span>
-            <span className="dot">•</span>
-            <span>React &amp; JavaScript</span>
-            <span className="dot">•</span>
-            <span>Dados &amp; IA</span>
-          </p>
-          <div className="perfil-biografia">
-            <p>
+    <main className="bento-container">
+      {/* 1. HERO ROW: Profile Card + Master Featured Project */}
+      <section id="sobre" className="bento-grid">
+        <aside className="bento-card card-profile">
+          <div>
+            <div className="profile-photo-wrapper">
+              <img src={asset('2b.jpg')} alt="Foto de perfil de João Francisco" />
+            </div>
+            <p className="card-profile-tag">Desenvolvedor Fullstack</p>
+            <h1 className="card-profile-name">João Francisco</h1>
+            <p className="card-profile-bio">
               Estudante de Engenharia de Software na PUC Minas. Construo aplicações completas com Spring Boot e React, aliando uma base sólida de backend ao interesse contínuo por engenharia de dados e aplicações práticas com IA.
             </p>
+            <div className="bento-tags" aria-label="Especialidades">
+              <span className="bento-tag">Java &amp; Spring Boot</span>
+              <span className="bento-tag">React &amp; JavaScript</span>
+              <span className="bento-tag">Dados &amp; IA</span>
+            </div>
           </div>
-        </div>
 
-        <div className="foto">
-          <img src={asset('profile3-semfundo.webp')} alt="Foto de perfil de João Francisco" />
-        </div>
+          <div className="social-row-bento">
+            <a href="https://github.com/joaofr-tech" target="_blank" rel="noopener noreferrer" className="btn-bento-icon">
+              <span className="material-symbols-outlined" aria-hidden="true" style={{ fontSize: '18px' }}>code</span>
+              <span>GitHub</span>
+            </a>
+            <a href="https://www.linkedin.com/in/jo%C3%A3o-francisco-ramos/" target="_blank" rel="noopener noreferrer" className="btn-bento-icon">
+              <span className="material-symbols-outlined" aria-hidden="true" style={{ fontSize: '18px' }}>work</span>
+              <span>LinkedIn</span>
+            </a>
+          </div>
+        </aside>
+
+        {/* Master Project Card */}
+        <article className="bento-card card-featured">
+          <div>
+            <span className="featured-pill">
+              <span className="material-symbols-outlined" aria-hidden="true" style={{ fontSize: '15px' }}>auto_awesome</span>
+              <span>Destaque • Agente Autônomo</span>
+            </span>
+            <h2 className="featured-title">EstágioBot AI — Agente Autônomo para Busca de Vagas</h2>
+            <p className="featured-desc">
+              Agente autônomo baseado no Google Antigravity CLI que realiza buscas contínuas por vagas de estágio em Engenharia de Software, Dados e Inteligência Artificial. Filtra automaticamente oportunidades compatíveis com turno matutino, alimenta um dashboard local minimalista com auditoria e métricas de varredura, e dispara notificações por e-mail em React sempre que novas vagas são encontradas.
+            </p>
+            <div className="bento-tags" aria-label="Tecnologias do projeto principal">
+              <span className="bento-tag" style={{ color: 'var(--accent)', borderColor: 'rgba(249, 115, 22, 0.3)' }}>Agentes de IA</span>
+              <span className="bento-tag">Google Antigravity CLI</span>
+              <span className="bento-tag">Node.js</span>
+              <span className="bento-tag">React</span>
+              <span className="bento-tag">PowerShell</span>
+            </div>
+          </div>
+          <div className="bento-card-actions">
+            <a
+              href="https://github.com/joaofr-tech/estagio-bot-ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-bento-link btn-bento-primary"
+            >
+              <span className="material-symbols-outlined" aria-hidden="true" style={{ fontSize: '16px' }}>code</span>
+              <span>Repositório no GitHub</span>
+            </a>
+          </div>
+        </article>
       </section>
 
-      <Projects />
-
-      <Articles />
-
-      <section id="certificados" className="certificados-section">
-        <div className="certificados-hero">
-          <div className="section-label">
-            <span className="material-symbols-outlined" aria-hidden="true">workspace_premium</span>
-            <p>Certificações</p>
+      {/* 2. PROJECTS BENTO GRID */}
+      <section id="projetos" className="bento-grid" style={{ marginTop: '20px' }} aria-label="Projetos desenvolvidos">
+        {/* Project 2: Cloud Data Pipeline Azure */}
+        <article className="bento-card col-4">
+          <div>
+            <h3 className="bento-project-title">{secondaryProjects[0].title}</h3>
+            <p className="bento-project-desc">{secondaryProjects[0].impactDescription}</p>
+            <div className="bento-tags">
+              {secondaryProjects[0].tags.map((t) => (
+                <span key={t} className="bento-tag">{t}</span>
+              ))}
+            </div>
           </div>
-        </div>
+          <div className="bento-card-actions">
+            <a
+              href={secondaryProjects[0].githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-bento-link btn-bento-secondary"
+            >
+              <span className="material-symbols-outlined" aria-hidden="true" style={{ fontSize: '16px' }}>code</span>
+              <span>Código no GitHub</span>
+            </a>
+          </div>
+        </article>
 
-        <div className="certificados-grid" aria-label="Lista de certificações">
-          {certifications.map((cert) => (
-            <article className="certificado-card" key={cert.title}>
-              <div className="certificado-header">
-                <div className="cert-icon" aria-hidden="true">{cert.icon}</div>
-                <span className="ano">{cert.year}</span>
-              </div>
-              <div className="certificado-content">
-                <h3>{cert.title}</h3>
-                <p className="instituicao">{cert.institution}</p>
-              </div>
-              <div className="certificado-actions">
+        {/* Project 3: Movie App TMDB */}
+        <article className="bento-card col-4">
+          <div>
+            <h3 className="bento-project-title">{secondaryProjects[1].title}</h3>
+            <p className="bento-project-desc">{secondaryProjects[1].impactDescription}</p>
+            <div className="bento-tags">
+              {secondaryProjects[1].tags.map((t) => (
+                <span key={t} className="bento-tag">{t}</span>
+              ))}
+            </div>
+          </div>
+          <div className="bento-card-actions">
+            <a
+              href={secondaryProjects[1].githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-bento-link btn-bento-secondary"
+            >
+              <span className="material-symbols-outlined" aria-hidden="true" style={{ fontSize: '16px' }}>code</span>
+              <span>Código no GitHub</span>
+            </a>
+          </div>
+        </article>
+
+        {/* Project 4: Pipeline ETL Docker */}
+        <article className="bento-card col-4">
+          <div>
+            <h3 className="bento-project-title">{secondaryProjects[2].title}</h3>
+            <p className="bento-project-desc">{secondaryProjects[2].impactDescription}</p>
+            <div className="bento-tags">
+              {secondaryProjects[2].tags.map((t) => (
+                <span key={t} className="bento-tag">{t}</span>
+              ))}
+            </div>
+          </div>
+          <div className="bento-card-actions">
+            <a
+              href={secondaryProjects[2].githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-bento-link btn-bento-secondary"
+            >
+              <span className="material-symbols-outlined" aria-hidden="true" style={{ fontSize: '16px' }}>code</span>
+              <span>Código no GitHub</span>
+            </a>
+          </div>
+        </article>
+
+        {/* Project 5: Album26 */}
+        <article className="bento-card col-6">
+          <div>
+            <h3 className="bento-project-title">{secondaryProjects[3].title}</h3>
+            <p className="bento-project-desc">{secondaryProjects[3].impactDescription}</p>
+            <div className="bento-tags">
+              {secondaryProjects[3].tags.map((t) => (
+                <span key={t} className="bento-tag">{t}</span>
+              ))}
+            </div>
+          </div>
+          <div className="bento-card-actions">
+            {secondaryProjects[3].liveUrl && (
+              <a
+                href={secondaryProjects[3].liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-bento-link btn-bento-primary"
+              >
+                <span className="material-symbols-outlined" aria-hidden="true" style={{ fontSize: '16px' }}>open_in_new</span>
+                <span>Live Demo</span>
+              </a>
+            )}
+            <a
+              href={secondaryProjects[3].githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-bento-link btn-bento-secondary"
+            >
+              <span className="material-symbols-outlined" aria-hidden="true" style={{ fontSize: '16px' }}>code</span>
+              <span>Código</span>
+            </a>
+          </div>
+        </article>
+
+        {/* Project 6: Habitus */}
+        <article className="bento-card col-6">
+          <div>
+            <h3 className="bento-project-title">{secondaryProjects[4].title}</h3>
+            <p className="bento-project-desc">{secondaryProjects[4].impactDescription}</p>
+            <div className="bento-tags">
+              {secondaryProjects[4].tags.map((t) => (
+                <span key={t} className="bento-tag">{t}</span>
+              ))}
+            </div>
+          </div>
+          <div className="bento-card-actions">
+            {secondaryProjects[4].liveUrl && (
+              <a
+                href={secondaryProjects[4].liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-bento-link btn-bento-primary"
+              >
+                <span className="material-symbols-outlined" aria-hidden="true" style={{ fontSize: '16px' }}>open_in_new</span>
+                <span>Live Demo</span>
+              </a>
+            )}
+            <a
+              href={secondaryProjects[4].githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-bento-link btn-bento-secondary"
+            >
+              <span className="material-symbols-outlined" aria-hidden="true" style={{ fontSize: '16px' }}>code</span>
+              <span>Código</span>
+            </a>
+          </div>
+        </article>
+      </section>
+
+      {/* 3. ARTICLES & CERTIFICATIONS BENTO GRID */}
+      <div className="bento-grid" style={{ marginTop: '20px' }}>
+        {/* Articles Bento Card */}
+        <section id="artigos" className="bento-card col-6" aria-label="Artigos Técnicos">
+          <div style={{ marginBottom: '16px' }}>
+            <h3 className="bento-project-title" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <span className="material-symbols-outlined" aria-hidden="true" style={{ color: 'var(--accent)' }}>article</span>
+              <span>Artigos Técnicos</span>
+            </h3>
+            <p style={{ fontSize: '0.85rem', color: 'var(--muted-color)' }}>
+              Guias sobre agentes de IA e ecossistema moderno
+            </p>
+          </div>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            {articles.map((article) => (
+              <a
+                key={article.slug}
+                href={`#/artigo/${article.slug}`}
+                className="bento-article-item"
+                aria-label={`Ler artigo: ${article.title}`}
+              >
+                <div className="bento-article-thumb">
+                  <img src={article.coverImage} alt="" />
+                </div>
+                <div>
+                  <span className="bento-article-meta">{article.date} • {article.readTime}</span>
+                  <h4 className="bento-article-title">{article.title}</h4>
+                </div>
+              </a>
+            ))}
+          </div>
+        </section>
+
+        {/* Certifications Bento Card */}
+        <section id="certificados" className="bento-card col-6" aria-label="Certificações">
+          <div style={{ marginBottom: '16px' }}>
+            <h3 className="bento-project-title" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <span className="material-symbols-outlined" aria-hidden="true" style={{ color: 'var(--amber)' }}>workspace_premium</span>
+              <span>Certificações</span>
+            </h3>
+            <p style={{ fontSize: '0.85rem', color: 'var(--muted-color)' }}>
+              Formação complementar e proficiência comprovada
+            </p>
+          </div>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            {certifications.map((cert) => (
+              <div key={cert.title} className="bento-cert-row">
+                <div className="bento-cert-info">
+                  <div className="bento-cert-icon" aria-hidden="true">{cert.icon}</div>
+                  <div>
+                    <h4 className="bento-cert-title">{cert.title}</h4>
+                    <p className="bento-cert-inst">{cert.institution} • {cert.year}</p>
+                  </div>
+                </div>
                 <a
                   href={cert.link}
-                  className="btn-action btn-secondary"
+                  className="btn-bento-link btn-bento-secondary"
+                  style={{ padding: '5px 12px', fontSize: '0.78rem' }}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <span className="material-symbols-outlined" aria-hidden="true">open_in_new</span>
-                  <span>Verificar certificado</span>
+                  <span className="material-symbols-outlined" aria-hidden="true" style={{ fontSize: '15px' }}>open_in_new</span>
+                  <span>Verificar</span>
                 </a>
               </div>
-            </article>
-          ))}
-        </div>
-      </section>
+            ))}
+          </div>
+        </section>
+      </div>
     </main>
   )
 }

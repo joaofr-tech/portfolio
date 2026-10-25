@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>João Francisco — Fullstack Developer (Apple Spatial Concept)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <style>
+    :root {
+      --bg: #09090b;
+      --card-bg: rgba(255, 255, 255, 0.04);
+      --card-bg-hover: rgba(255, 255, 255, 0.07);
+      --card-border: rgba(255, 255, 255, 0.1);
+      --card-border-hover: rgba(255, 255, 255, 0.22);
+      --glass-blur: blur(28px);
+      --text-main: #f4f4f5;
+      --text-muted: #a1a1aa;
+      --text-sub: #71717a;
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.2);
+      --spring: cubic-bezier(0.16, 1, 0.3, 1);
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --radius-sm: 10px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Ambient Spatial Lighting */
+    .ambient-glow {
+      position: fixed;
+      top: -150px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.14) 0%, rgba(139, 92, 246, 0.08) 50%, transparent 80%);
+      filter: blur(90px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .ambient-glow-2 {
+      position: fixed;
+      bottom: -150px;
+      right: 10%;
+      width: 600px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(217, 119, 87, 0.1) 0%, transparent 70%);
+      filter: blur(100px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Floating Island Nav */
+    .nav-wrap {
+      position: sticky;
+      top: 24px;
+      display: flex;
+      justify-content: center;
+      z-index: 100;
+      padding: 0 16px;
+    }
+
+    .floating-nav {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(18, 18, 22, 0.72);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--card-border);
+      padding: 6px 12px;
+      border-radius: 9999px;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-brand-avatar {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #38bdf8, #818cf8);
+      display: grid;
+      place-items: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #000;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 4px;
+      list-style: none;
+    }
+
+    .nav-link {
+      padding: 6px 14px;
+      border-radius: 9999px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: all 0.25s var(--spring);
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      background: rgba(34, 197, 94, 0.12);
+      border: 1px solid rgba(34, 197, 94, 0.25);
+      border-radius: 9999px;
+      font-size: 0.72rem;
+      color: #4ade80;
+      font-weight: 500;
+      margin-left: 6px;
+    }
+
+    .dot-live {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #4ade80;
+      box-shadow: 0 0 8px #4ade80;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 60px 24px 120px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Hero Section */
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+      gap: 48px;
+      margin-bottom: 96px;
+    }
+
+    .hero-pretitle {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 4vw, 3.8rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.08;
+      margin-bottom: 16px;
+      background: linear-gradient(180deg, #ffffff 40%, rgba(255, 255, 255, 0.65) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-tags {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    .hero-tags span.dot {
+      color: var(--text-sub);
+    }
+
+    .hero-bio {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 32px;
+      max-width: 560px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-spatial-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #ffffff;
+      color: #000000;
+      padding: 12px 24px;
+      border-radius: 9999px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s var(--spring);
+      box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
+    }
+
+    .btn-spatial-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(255, 255, 255, 0.25);
+    }
+
+    .btn-spatial-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text-main);
+      border: 1px solid var(--card-border);
+      padding: 12px 24px;
+      border-radius: 9999px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      backdrop-filter: blur(16px);
+      transition: all 0.25s var(--spring);
+    }
+
+    .btn-spatial-secondary:hover {
+      background: rgba(255, 255, 255, 0.14);
+      border-color: var(--card-border-hover);
+      transform: translateY(-2px);
+    }
+
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+
+    .photo-frame {
+      width: 280px;
+      height: 280px;
+      border-radius: 36px;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      backdrop-filter: var(--glass-blur);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.05);
+      transition: transform 0.5s var(--spring);
+    }
+
+    .photo-frame:hover img {
+      transform: scale(1.1);
+    }
+
+    .badge-subtle-float {
+      position: absolute;
+      bottom: -10px;
+      background: rgba(18, 18, 22, 0.85);
+      border: 1px solid var(--card-border);
+      backdrop-filter: blur(20px);
+      padding: 8px 16px;
+      border-radius: 9999px;
+      font-size: 0.78rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-main);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Section Styling */
+    .section {
+      margin-bottom: 96px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 32px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-sub {
+      font-size: 0.85rem;
+      color: var(--text-sub);
+    }
+
+    /* Projects Grid - Apple Glass Cards */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .project-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      backdrop-filter: var(--glass-blur);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.35s var(--spring);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 80% 0%, rgba(255, 255, 255, 0.05), transparent 60%);
+      pointer-events: none;
+    }
+
+    .project-card:hover {
+      background: var(--card-bg-hover);
+      border-color: var(--card-border-hover);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    }
+
+    .project-title {
+      font-size: 1.18rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      color: #ffffff;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .project-tag {
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--accent);
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.16);
+      padding: 3px 9px;
+      border-radius: 9999px;
+    }
+
+    .project-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .project-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: auto;
+    }
+
+    .btn-action-small {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 7px 14px;
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-action-primary {
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .btn-action-primary:hover {
+      background: rgba(255, 255, 255, 0.22);
+    }
+
+    .btn-action-secondary {
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px solid var(--card-border);
+    }
+
+    .btn-action-secondary:hover {
+      color: var(--text-main);
+      border-color: var(--card-border-hover);
+    }
+
+    /* Articles Section */
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .article-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      backdrop-filter: var(--glass-blur);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: all 0.35s var(--spring);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .article-card:hover {
+      border-color: var(--card-border-hover);
+      transform: translateY(-3px);
+    }
+
+    .article-thumb {
+      height: 160px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .article-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .article-card:hover .article-thumb img {
+      transform: scale(1.05);
+    }
+
+    .article-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .article-meta {
+      font-size: 0.75rem;
+      color: var(--text-sub);
+      margin-bottom: 8px;
+    }
+
+    .article-heading {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    .article-summary {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+
+    /* Certifications Grid */
+    .certs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .cert-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      backdrop-filter: var(--glass-blur);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s ease;
+    }
+
+    .cert-card:hover {
+      border-color: var(--card-border-hover);
+      background: var(--card-bg-hover);
+    }
+
+    .cert-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
+    .cert-badge-icon {
+      font-size: 1.5rem;
+    }
+
+    .cert-year {
+      font-size: 0.75rem;
+      color: var(--text-sub);
+      background: rgba(255, 255, 255, 0.05);
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+
+    .cert-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #ffffff;
+    }
+
+    .cert-issuer {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .cert-link {
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 500;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 40px 0;
+      margin-top: 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      color: var(--text-sub);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 16px;
+    }
+
+    .social-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s ease;
+    }
+
+    .social-link:hover {
+      color: #ffffff;
+    }
+
+    @media (max-width: 820px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 32px;
+      }
+      .hero-pretitle, .hero-tags, .hero-actions {
+        justify-content: center;
+      }
+      .hero-bio {
+        margin: 0 auto 32px;
+      }
+      .projects-grid, .articles-grid, .certs-grid {
+        grid-template-columns: 1fr;
+      }
+      .floating-nav {
+        font-size: 0.8rem;
+        padding: 4px 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="ambient-glow"></div>
+  <div class="ambient-glow-2"></div>
+
+  <!-- Island Nav -->
+  <div class="nav-wrap">
+    <nav class="floating-nav" aria-label="Navegação Apple Spatial">
+      <a href="#sobre" class="nav-brand">
+        <span class="nav-brand-avatar">JF</span>
+        <span>João Francisco</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#sobre" class="nav-link active">Sobre</a></li>
+        <li><a href="#projetos" class="nav-link">Projetos</a></li>
+        <li><a href="#artigos" class="nav-link">Artigos</a></li>
+        <li><a href="#certificados" class="nav-link">Certificações</a></li>
+      </ul>
+      <span class="nav-badge-pill">
+        <span class="dot-live"></span>
+        <span>PUC Minas</span>
+      </span>
+    </nav>
+  </div>
+
+  <div class="container">
+    <!-- Hero Section -->
+    <section id="sobre" class="hero">
+      <div class="hero-content">
+        <div class="hero-pretitle">
+          <span class="material-symbols-outlined" style="font-size: 16px;">terminal</span>
+          <span>Desenvolvedor Fullstack</span>
+        </div>
+        <h1 class="hero-title">Construindo software com rigor e inteligência.</h1>
+        <div class="hero-tags">
+          <span>Java &amp; Spring Boot</span>
+          <span class="dot">•</span>
+          <span>React &amp; JavaScript</span>
+          <span class="dot">•</span>
+          <span>Dados &amp; IA</span>
+        </div>
+        <p class="hero-bio">
+          Estudante de Engenharia de Software na PUC Minas. Construo aplicações completas com Spring Boot e React, aliando uma base sólida de backend ao interesse contínuo por engenharia de dados e aplicações práticas com IA.
+        </p>
+        <div class="hero-actions">
+          <a href="#projetos" class="btn-spatial-primary">
+            <span>Explorar Projetos</span>
+            <span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span>
+          </a>
+          <a href="https://github.com/joaofr-tech" target="_blank" rel="noopener noreferrer" class="btn-spatial-secondary">
+            <span class="material-symbols-outlined" style="font-size: 18px;">code</span>
+            <span>GitHub</span>
+          </a>
+          <a href="https://www.linkedin.com/in/jo%C3%A3o-francisco-ramos/" target="_blank" rel="noopener noreferrer" class="btn-spatial-secondary">
+            <span class="material-symbols-outlined" style="font-size: 18px;">work</span>
+            <span>LinkedIn</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="photo-frame">
+          <img src="../public/assets/2b.jpg" alt="Foto de perfil de João Francisco" />
+        </div>
+        <div class="badge-subtle-float">
+          <span class="material-symbols-outlined" style="font-size: 16px; color: #38bdf8;">verified</span>
+          <span>Engenharia de Software • PUC Minas</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projetos" class="section">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span class="material-symbols-outlined" style="color: var(--accent);">folder_open</span>
+          <span>Projetos Selecionados</span>
+        </h2>
+        <span class="section-sub">Aplicações fullstack, agentes de IA e engenharia de dados</span>
+      </div>
+
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <article class="project-card">
+          <div>
+            <h3 class="project-title">EstágioBot AI — Agente Autônomo para Busca de Vagas</h3>
+            <div class="project-tags">
+              <span class="project-tag">Agentes de IA</span>
+              <span class="project-tag">Google Antigravity CLI</span>
+              <span class="project-tag">Node.js</span>
+              <span class="project-tag">React</span>
+              <span class="project-tag">PowerShell</span>
+            </div>
+            <p class="project-desc">
+              Agente autônomo baseado no Google Antigravity CLI que realiza buscas contínuas por vagas de estágio em Engenharia de Software, Dados e Inteligência Artificial. Filtra automaticamente oportunidades compatíveis com turno matutino, alimenta um dashboard local minimalista com auditoria e métricas de varredura, e dispara notificações por e-mail em React sempre que novas vagas são encontradas.
+            </p>
+          </div>
+          <div class="project-actions">
+            <a href="https://github.com/joaofr-tech/estagio-bot-ai" target="_blank" rel="noopener noreferrer" class="btn-action-small btn-action-primary">
+              <span class="material-symbols-outlined" style="font-size: 16px;">code</span>
+              <span>Código no GitHub</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="project-card">
+          <div>
+            <h3 class="project-title">Cloud Data Pipeline: Arquitetura Medalhão com Azure e Python</h3>
+            <div class="project-tags">
+              <span class="project-tag">Engenharia de Dados</span>
+              <span class="project-tag">Azure Blob Storage</span>
+              <span class="project-tag">Python</span>
+              <span class="project-tag">Pandas &amp; Parquet</span>
+              <span class="project-tag">SQL</span>
+            </div>
+            <p class="project-desc">
+              Pipeline de dados ponta a ponta implementando a Arquitetura Medalhão (Bronze, Silver e Gold). Extrai cotações cambiais em tempo real via API REST, armazena payloads brutos particionados no Azure Blob Storage, limpa e converte para Parquet colunar e ingere em banco SQL analítico com consultas para médias móveis e métricas de volatilidade.
+            </p>
+          </div>
+          <div class="project-actions">
+            <a href="https://github.com/joaofr-tech/cloud-data-pipeline-azure" target="_blank" rel="noopener noreferrer" class="btn-action-small btn-action-primary">
+              <span class="material-symbols-outlined" style="font-size: 16px;">code</span>
+              <span>Código no GitHub</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="project-card">
+          <div>
+            <h3 class="project-title">Movie App — Catálogo e Busca de Filmes com TMDB</h3>
+            <div class="project-tags">
+              <span class="project-tag">Frontend</span>
+              <span class="project-tag">React 19</span>
+              <span class="project-tag">Vite</span>
+              <span class="project-tag">TMDB API</span>
+              <span class="project-tag">Context API</span>
+            </div>
+            <p class="project-desc">
+              Aplicação web moderna e responsiva para exploração e busca de filmes em tempo real integrada à API TMDB. Conta com gerenciamento de estado global, persistência de favoritos no localStorage com feedback visual e interface Dark Mode adaptada para múltiplos dispositivos.
+            </p>
+          </div>
+          <div class="project-actions">
+            <a href="https://github.com/joaofr-tech/movie-react-app" target="_blank" rel="noopener noreferrer" class="btn-action-small btn-action-primary">
+              <span class="material-symbols-outlined" style="font-size: 16px;">code</span>
+              <span>Código no GitHub</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- Project 4 -->
+        <article class="project-card">
+          <div>
+            <h3 class="project-title">Pipeline ETL com Arquitetura Medalhão e Enriquecimento</h3>
+            <div class="project-tags">
+              <span class="project-tag">Engenharia de Dados</span>
+              <span class="project-tag">Python</span>
+              <span class="project-tag">PostgreSQL</span>
+              <span class="project-tag">Docker</span>
+            </div>
+            <p class="project-desc">
+              Arquitetura em três camadas (Bronze, Silver e Gold) para processamento e enriquecimento de cadastros via API pública. Converte dados brutos para Parquet otimizado e popula banco PostgreSQL em Docker para análise relacional no DBeaver.
+            </p>
+          </div>
+          <div class="project-actions">
+            <a href="https://github.com/joaofr-tech/ETL-medalion-architecture" target="_blank" rel="noopener noreferrer" class="btn-action-small btn-action-primary">
+              <span class="material-symbols-outlined" style="font-size: 16px;">code</span>
+              <span>Código no GitHub</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- Project 5 -->
+        <article class="project-card">
+          <div>
+            <h3 class="project-title">Album26 — Controle da Copa do Mundo 2026</h3>
+            <div class="project-tags">
+              <span class="project-tag">Frontend</span>
+              <span class="project-tag">PWA / Mobile</span>
+              <span class="project-tag">Vanilla JS</span>
+              <span class="project-tag">Cloudflare Workers</span>
+            </div>
+            <p class="project-desc">
+              PWA mobile-first e offline para controle da coleção de figurinhas da Copa do Mundo 2026. Conta com registro por voz e ditado natural, conferência inteligente de listas do WhatsApp e persistência local segura (sem backend).
+            </p>
+          </div>
+          <div class="project-actions">
+            <a href="https://pwa-album-copa-sdd.jf756061.workers.dev" target="_blank" rel="noopener noreferrer" class="btn-action-small btn-action-primary">
+              <span class="material-symbols-outlined" style="font-size: 16px;">open_in_new</span>
+              <span>Live Demo</span>
+            </a>
+            <a href="https://github.com/joaofr-tech/Album26" target="_blank" rel="noopener noreferrer" class="btn-action-small btn-action-secondary">
+              <span class="material-symbols-outlined" style="font-size: 16px;">code</span>
+              <span>Código</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- Project 6 -->
+        <article class="project-card">
+          <div>
+            <h3 class="project-title">Habitus — Consolidação de Hábitos e Metas</h3>
+            <div class="project-tags">
+              <span class="project-tag">Frontend</span>
+              <span class="project-tag">React</span>
+              <span class="project-tag">TypeScript</span>
+              <span class="project-tag">Cloudflare Pages</span>
+            </div>
+            <p class="project-desc">
+              Aplicação web minimalista para calcular e acompanhar a consistência de hábitos e metas pessoais. Permite registros por oportunidade, métricas de adesão e persistência 100% local via localStorage.
+            </p>
+          </div>
+          <div class="project-actions">
+            <a href="https://kpi-habits.jf756061.workers.dev/" target="_blank" rel="noopener noreferrer" class="btn-action-small btn-action-primary">
+              <span class="material-symbols-outlined" style="font-size: 16px;">open_in_new</span>
+              <span>Live Demo</span>
+            </a>
+            <a href="https://github.com/joaofr-tech/kpi-habits" target="_blank" rel="noopener noreferrer" class="btn-action-small btn-action-secondary">
+              <span class="material-symbols-outlined" style="font-size: 16px;">code</span>
+              <span>Código</span>
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Articles Section -->
+    <section id="artigos" class="section">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span class="material-symbols-outlined" style="color: #a78bfa;">article</span>
+          <span>Artigos Técnicos</span>
+        </h2>
+        <span class="section-sub">Guias e análises sobre IA e ferramentas modernas</span>
+      </div>
+
+      <div class="articles-grid">
+        <article class="article-card">
+          <div class="article-thumb">
+            <img src="../public/local-ai-agent-cover.jpg" alt="Capa Agente IA Local" />
+          </div>
+          <div class="article-body">
+            <span class="article-meta">Setembro de 2026 • 3 min de leitura</span>
+            <h3 class="article-heading">Construindo um Agente de IA 100% Local com PydanticAI e Ollama</h3>
+            <p class="article-summary">
+              Guia prático para criar um agente autônomo rodando 100% localmente com Ollama e PydanticAI, integrando modelo, system prompt e ferramentas sem custos de API.
+            </p>
+            <a href="#/artigo/construindo-agente-ia-local-pydanticai-ollama" class="cert-link" style="margin-top: auto;">
+              <span>Ler artigo completo</span>
+              <span class="material-symbols-outlined" style="font-size: 16px;">arrow_forward</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="article-card">
+          <div class="article-thumb">
+            <img src="../public/claude-code-cover.jpg" alt="Capa Claude Code" />
+          </div>
+          <div class="article-body">
+            <span class="article-meta">Setembro de 2026 • 3 min de leitura</span>
+            <h3 class="article-heading">Como eu uso o Claude Code gratuitamente?</h3>
+            <p class="article-summary">
+              Passo a passo prático para configurar o Claude Code sem custos utilizando o Free Claude Code e OpenRouter, com solução definitiva para o erro de cache retido.
+            </p>
+            <a href="#/artigo/como-usar-claude-code-gratuitamente" class="cert-link" style="margin-top: auto;">
+              <span>Ler artigo completo</span>
+              <span class="material-symbols-outlined" style="font-size: 16px;">arrow_forward</span>
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certificados" class="section">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span class="material-symbols-outlined" style="color: #f59e0b;">workspace_premium</span>
+          <span>Certificações</span>
+        </h2>
+        <span class="section-sub">Formação contínua e proficiência comprovada</span>
+      </div>
+
+      <div class="certs-grid">
+        <div class="cert-card">
+          <div>
+            <div class="cert-top">
+              <span class="cert-badge-icon">🎓</span>
+              <span class="cert-year">2025</span>
+            </div>
+            <h3 class="cert-name">CS50's Introduction to Computer Science</h3>
+            <p class="cert-issuer">Harvard University</p>
+          </div>
+          <a href="../public/CS50x-cetified.pdf" target="_blank" rel="noopener noreferrer" class="cert-link">
+            <span>Verificar certificado</span>
+            <span class="material-symbols-outlined" style="font-size: 16px;">open_in_new</span>
+          </a>
+        </div>
+
+        <div class="cert-card">
+          <div>
+            <div class="cert-top">
+              <span class="cert-badge-icon">🌎</span>
+              <span class="cert-year">2026</span>
+            </div>
+            <h3 class="cert-name">EF SET English Certificate 62/100 (C1 Advanced)</h3>
+            <p class="cert-issuer">EF SET</p>
+          </div>
+          <a href="https://cert.efset.org/en/ZTsv7T" target="_blank" rel="noopener noreferrer" class="cert-link">
+            <span>Verificar credencial</span>
+            <span class="material-symbols-outlined" style="font-size: 16px;">open_in_new</span>
+          </a>
+        </div>
+
+        <div class="cert-card">
+          <div>
+            <div class="cert-top">
+              <span class="cert-badge-icon">
+                <svg width="22" height="22" viewBox="0 0 248 248" fill="none" style="vertical-align: middle;">
+                  <path d="M52.4285 162.873L98.7844 136.879L99.5485 134.602L98.7844 133.334H96.4921L88.7237 132.862L62.2346 132.153L39.3113 131.207L17.0249 130.026L11.4214 128.844L6.2 121.873L6.7094 118.447L11.4214 115.257L18.171 115.847L33.0711 116.911L55.485 118.447L71.6586 119.392L95.728 121.873H99.5485L100.058 120.337L98.7844 119.392L97.7656 118.447L74.5877 102.732L49.4995 86.1905L36.3823 76.62L29.3779 71.7757L25.8121 67.2858L24.2839 57.3608L30.6515 50.2716L39.3113 50.8623L41.4763 51.4531L50.2636 58.1879L68.9842 72.7209L93.4357 90.6804L97.0015 93.6343L98.4374 92.6652L98.6571 91.9801L97.0015 89.2625L83.757 65.2772L69.621 40.8192L63.2534 30.6579L61.5978 24.632C60.9565 22.1032 60.579 20.0111 60.579 17.4246L67.8381 7.49965L71.9133 6.19995L81.7193 7.49965L85.7946 11.0443L91.9074 24.9865L101.714 46.8451L116.996 76.62L121.453 85.4816L123.873 93.6343L124.764 96.1155H126.292V94.6976L127.566 77.9197L129.858 57.3608L132.15 30.8942L132.915 23.4505L136.608 14.4708L143.994 9.62643L149.725 12.344L154.437 19.0788L153.8 23.4505L150.998 41.6463L145.522 70.1215L141.957 89.2625H143.994L146.414 86.7813L156.093 74.0206L172.266 53.698L179.398 45.6635L187.803 36.802L193.152 32.5484H203.34L210.726 43.6549L207.415 55.1159L196.972 68.3492L188.312 79.5739L175.896 96.2095L168.191 109.585L168.882 110.689L170.738 110.53L198.755 104.504L213.91 101.787L231.994 98.7149L240.144 102.496L241.036 106.395L237.852 114.311L218.495 119.037L195.826 123.645L162.07 131.592L161.696 131.893L162.137 132.547L177.36 133.925L183.855 134.279H199.774L229.447 136.524L237.215 141.605L241.8 147.867L241.036 152.711L229.065 158.737L213.019 154.956L175.45 145.977L162.587 142.787H160.805V143.85L171.502 154.366L191.242 172.089L215.82 195.011L217.094 200.682L213.91 205.172L210.599 204.699L188.949 188.394L180.544 181.069L161.696 165.118H160.422V166.772L164.752 173.152L187.803 207.771L188.949 218.405L187.294 221.832L181.308 223.959L174.813 222.777L161.187 203.754L147.305 182.486L136.098 163.345L134.745 164.2L128.075 235.42L125.019 239.082L117.887 241.8L111.902 237.31L108.718 229.984L111.902 215.452L115.722 196.547L118.779 181.541L121.58 162.873L123.291 156.636L123.14 156.219L121.773 156.449L107.699 175.752L86.304 204.699L69.3663 222.777L65.291 224.431L58.2867 220.768L58.9235 214.27L62.8713 208.48L86.304 178.705L100.44 160.155L109.551 149.507L109.462 147.967L108.959 147.924L46.6977 188.512L35.6182 189.93L30.7788 185.44L31.4156 178.115L33.7079 175.752L52.4285 162.873Z" fill="#D97757"/>
+                </svg>
+              </span>
+              <span class="cert-year">2026</span>
+            </div>
+            <h3 class="cert-name">Claude Code 101</h3>
+            <p class="cert-issuer">Claude Academy</p>
+          </div>
+          <a href="https://academy.claude.com/verify/0007973ade5f98e19de2707670fc0eaa" target="_blank" rel="noopener noreferrer" class="cert-link">
+            <span>Verificar credencial</span>
+            <span class="material-symbols-outlined" style="font-size: 16px;">open_in_new</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>© 2026 João Francisco. Desenvolvido com precisão visual Apple Spatial.</p>
+      <div class="social-links">
+        <a href="https://github.com/joaofr-tech" target="_blank" rel="noopener noreferrer" class="social-link">
+          <span class="material-symbols-outlined" style="font-size: 18px;">code</span>
+          <span>GitHub</span>
+        </a>
+        <a href="https://www.linkedin.com/in/jo%C3%A3o-francisco-ramos/" target="_blank" rel="noopener noreferrer" class="social-link">
+          <span class="material-symbols-outlined" style="font-size: 18px;">work</span>
+          <span>LinkedIn</span>
+        </a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
+

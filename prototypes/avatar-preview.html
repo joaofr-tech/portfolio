@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aprovação de Enquadramento & Zoom da Foto — João Francisco</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <style>
+    :root {
+      --bg: #0c0e14;
+      --card-bg: #141721;
+      --card-bg-subtle: #191d2a;
+      --card-border: rgba(255, 255, 255, 0.08);
+      --card-border-hover: rgba(249, 115, 22, 0.4);
+      --accent: #f97316;
+      --accent-glow: rgba(249, 115, 22, 0.18);
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --font-main: 'Plus Jakarta Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --radius-bento: 24px;
+      --spring: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-main);
+      line-height: 1.6;
+      padding: 40px 24px 100px;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    .header-banner {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-bento);
+      padding: 28px 36px;
+      margin-bottom: 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .header-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 6px;
+    }
+
+    .header-desc {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      max-width: 680px;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--card-border);
+      color: #ffffff;
+      padding: 10px 18px;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .back-btn:hover {
+      background: var(--accent);
+      color: #000;
+      border-color: var(--accent);
+    }
+
+    /* Interactive Live Tuner Card */
+    .live-tuner-panel {
+      background: linear-gradient(135deg, rgba(249, 115, 22, 0.12) 0%, var(--card-bg) 60%);
+      border: 1px solid rgba(249, 115, 22, 0.3);
+      border-radius: var(--radius-bento);
+      padding: 32px;
+      margin-bottom: 48px;
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .controls-box {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .control-item {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .control-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    .control-label span:last-child {
+      font-family: var(--font-mono);
+      color: var(--accent);
+    }
+
+    input[type="range"] {
+      accent-color: var(--accent);
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .code-badge {
+      background: #090a0f;
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: #38bdf8;
+      overflow-x: auto;
+    }
+
+    /* Comparison Grid */
+    .grid-options {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .option-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-bento);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: all 0.25s var(--spring);
+    }
+
+    .option-card:hover {
+      border-color: var(--card-border-hover);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+    }
+
+    .option-card.recommended {
+      border-color: rgba(249, 115, 22, 0.5);
+      background: radial-gradient(circle at 20% 0%, rgba(249, 115, 22, 0.1) 0%, var(--card-bg) 60%);
+    }
+
+    .option-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--card-bg-subtle);
+      border: 1px solid var(--card-border);
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      align-self: flex-start;
+    }
+
+    .option-card.recommended .option-pill {
+      background: rgba(249, 115, 22, 0.2);
+      border-color: var(--accent);
+      color: #ff9d5c;
+    }
+
+    .option-name {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+
+    .option-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    /* Avatar Containers */
+    /* OPÇÃO 1: Moldura 136px - Zoom 1.35x */
+    .avatar-opt-1 {
+      width: 136px;
+      height: 136px;
+      border-radius: 26px;
+      overflow: hidden;
+      border: 2px solid var(--card-border);
+      background: #191d2a;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+      margin-bottom: 20px;
+    }
+
+    .avatar-opt-1 img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 18%;
+      transform: scale(1.35);
+      transform-origin: 50% 22%;
+    }
+
+    /* OPÇÃO 2: Moldura 150px - Zoom 1.6x (RECOMENDADO - Rosto nítido e em destaque) */
+    .avatar-opt-2 {
+      width: 150px;
+      height: 150px;
+      border-radius: 30px;
+      overflow: hidden;
+      border: 3px solid rgba(249, 115, 22, 0.4);
+      background: #191d2a;
+      box-shadow: 0 10px 30px rgba(249, 115, 22, 0.15), 0 8px 24px rgba(0, 0, 0, 0.6);
+      margin-bottom: 20px;
+    }
+
+    .avatar-opt-2 img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 15%;
+      transform: scale(1.65);
+      transform-origin: 50% 22%;
+    }
+
+    /* OPÇÃO 3: Moldura 168px - Super Zoom 1.95x (Close-up total no rosto) */
+    .avatar-opt-3 {
+      width: 168px;
+      height: 168px;
+      border-radius: 34px;
+      overflow: hidden;
+      border: 2px solid var(--card-border);
+      background: #191d2a;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+      margin-bottom: 20px;
+    }
+
+    .avatar-opt-3 img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 12%;
+      transform: scale(1.95);
+      transform-origin: 50% 20%;
+    }
+
+    /* Live preview box */
+    .live-avatar-frame {
+      width: 150px;
+      height: 150px;
+      border-radius: 30px;
+      overflow: hidden;
+      border: 3px solid var(--accent);
+      background: #191d2a;
+      box-shadow: 0 12px 32px rgba(249, 115, 22, 0.25);
+      margin-bottom: 16px;
+    }
+
+    .live-avatar-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Card mockup preview content */
+    .mock-tag {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .mock-name {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .mock-bio {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+
+    .mock-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .mock-pill {
+      font-size: 0.68rem;
+      background: var(--card-bg-subtle);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+
+    @media (max-width: 990px) {
+      .live-tuner-panel {
+        grid-template-columns: 1fr;
+      }
+      .grid-options {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header-banner">
+      <div>
+        <h1 class="header-title">
+          <span class="material-symbols-outlined" style="color: var(--accent); font-size: 28px;">crop_free</span>
+          <span>Ajuste de Zoom &amp; Enquadramento da Imagem de Perfil</span>
+        </h1>
+        <p class="header-desc">
+          Compare as 3 opções pré-configuradas abaixo ou use o <strong>Ajustador Interativo em Tempo Real</strong> para definir a escala exata e a posição do rosto na foto <code>2b.jpg</code>.
+        </p>
+      </div>
+      <a href="index.html" class="back-btn">
+        <span class="material-symbols-outlined" style="font-size: 18px;">arrow_back</span>
+        <span>Voltar ao Hub</span>
+      </a>
+    </header>
+
+    <!-- LIVE INTERACTIVE TUNER -->
+    <section class="live-tuner-panel">
+      <!-- Left: Realtime Preview -->
+      <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+        <div id="liveFrame" class="live-avatar-frame">
+          <img id="liveImg" src="../public/assets/2b.jpg" alt="Preview em Tempo Real" />
+        </div>
+        <p style="font-size: 0.82rem; font-weight: 700; color: #fff; margin-bottom: 2px;">Preview em Tempo Real</p>
+        <span style="font-size: 0.72rem; color: var(--accent);">Arraste os controles ao lado para testar</span>
+      </div>
+
+      <!-- Right: Controls -->
+      <div class="controls-box">
+        <div class="control-item">
+          <label class="control-label" for="sizeSlider">
+            <span>Tamanho da Moldura (largura / altura):</span>
+            <span id="sizeValue">150px</span>
+          </label>
+          <input type="range" id="sizeSlider" min="110" max="200" value="150" step="2" />
+        </div>
+
+        <div class="control-item">
+          <label class="control-label" for="zoomSlider">
+            <span>Nível de Zoom no Rosto (Scale):</span>
+            <span id="zoomValue">1.65x</span>
+          </label>
+          <input type="range" id="zoomSlider" min="1.0" max="2.6" value="1.65" step="0.05" />
+        </div>
+
+        <div class="control-item">
+          <label class="control-label" for="posYSlider">
+            <span>Posição Vertical do Foco (Eixo Y):</span>
+            <span id="posYValue">22%</span>
+          </label>
+          <input type="range" id="posYSlider" min="0" max="50" value="22" step="1" />
+        </div>
+
+        <div class="control-item">
+          <label class="control-label" for="radiusSlider">
+            <span>Arredondamento dos Cantos (Border Radius):</span>
+            <span id="radiusValue">30px</span>
+          </label>
+          <input type="range" id="radiusSlider" min="12" max="60" value="30" step="2" />
+        </div>
+
+        <div class="code-badge" id="cssOutput">
+          /* CSS Gerado em tempo real */
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 PRE-CONFIGURED CANDIDATES -->
+    <h2 style="font-size: 1.3rem; font-weight: 800; color: #fff; margin-bottom: 20px; display: flex; align-items: center; gap: 8px;">
+      <span class="material-symbols-outlined" style="color: var(--accent);">view_in_ar</span>
+      <span>Opções Prontas para Aprovação Direta</span>
+    </h2>
+
+    <div class="grid-options">
+      <!-- OPTION 1 -->
+      <div class="option-card">
+        <span class="option-pill">OPÇÃO 1 &bull; ZOOM MODERADO</span>
+        <h3 class="option-name">Moldura 136px (Zoom 1.35x)</h3>
+        <p class="option-desc">Aumenta a moldura de 104px para 136px com leve ampliação centrada no peito e rosto.</p>
+
+        <div class="avatar-opt-1">
+          <img src="../public/assets/2b.jpg" alt="Opção 1" />
+        </div>
+
+        <div>
+          <p class="mock-tag">Desenvolvedor Fullstack</p>
+          <h4 class="mock-name">João Francisco</h4>
+          <p class="mock-bio">Estudante de Engenharia de Software na PUC Minas. Construo aplicações completas com Spring Boot e React.</p>
+          <div class="mock-pills">
+            <span class="mock-pill">Java &amp; Spring</span>
+            <span class="mock-pill">React</span>
+            <span class="mock-pill">Dados &amp; IA</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- OPTION 2 (RECOMMENDED) -->
+      <div class="option-card recommended">
+        <span class="option-pill">
+          <span class="material-symbols-outlined" style="font-size: 14px;">star</span>
+          <span>OPÇÃO 2 &bull; RECOMENDADA</span>
+        </span>
+        <h3 class="option-name">Moldura 150px (Zoom 1.65x)</h3>
+        <p class="option-desc">Destaque ideal: o rosto ganha clareza imediata, mantendo ombros e postura com acabamento nítido.</p>
+
+        <div class="avatar-opt-2">
+          <img src="../public/assets/2b.jpg" alt="Opção 2" />
+        </div>
+
+        <div>
+          <p class="mock-tag">Desenvolvedor Fullstack</p>
+          <h4 class="mock-name">João Francisco</h4>
+          <p class="mock-bio">Estudante de Engenharia de Software na PUC Minas. Construo aplicações completas com Spring Boot e React.</p>
+          <div class="mock-pills">
+            <span class="mock-pill">Java &amp; Spring</span>
+            <span class="mock-pill">React</span>
+            <span class="mock-pill">Dados &amp; IA</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- OPTION 3 -->
+      <div class="option-card">
+        <span class="option-pill">OPÇÃO 3 &bull; CLOSE-UP TOTAL</span>
+        <h3 class="option-name">Moldura 168px (Zoom 1.95x)</h3>
+        <p class="option-desc">Enquadramento aproximado estilo retrato, eliminando fundos e focando 100% no rosto.</p>
+
+        <div class="avatar-opt-3">
+          <img src="../public/assets/2b.jpg" alt="Opção 3" />
+        </div>
+
+        <div>
+          <p class="mock-tag">Desenvolvedor Fullstack</p>
+          <h4 class="mock-name">João Francisco</h4>
+          <p class="mock-bio">Estudante de Engenharia de Software na PUC Minas. Construo aplicações completas com Spring Boot e React.</p>
+          <div class="mock-pills">
+            <span class="mock-pill">Java &amp; Spring</span>
+            <span class="mock-pill">React</span>
+            <span class="mock-pill">Dados &amp; IA</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const sizeSlider = document.getElementById('sizeSlider');
+    const zoomSlider = document.getElementById('zoomSlider');
+    const posYSlider = document.getElementById('posYSlider');
+    const radiusSlider = document.getElementById('radiusSlider');
+
+    const liveFrame = document.getElementById('liveFrame');
+    const liveImg = document.getElementById('liveImg');
+    const cssOutput = document.getElementById('cssOutput');
+
+    function updatePreview() {
+      const size = sizeSlider.value;
+      const zoom = zoomSlider.value;
+      const posY = posYSlider.value;
+      const radius = radiusSlider.value;
+
+      document.getElementById('sizeValue').textContent = size + 'px';
+      document.getElementById('zoomValue').textContent = zoom + 'x';
+      document.getElementById('posYValue').textContent = posY + '%';
+      document.getElementById('radiusValue').textContent = radius + 'px';
+
+      liveFrame.style.width = size + 'px';
+      liveFrame.style.height = size + 'px';
+      liveFrame.style.borderRadius = radius + 'px';
+
+      liveImg.style.transform = `scale(${zoom})`;
+      liveImg.style.transformOrigin = `50% ${posY}%`;
+
+      cssOutput.innerHTML = `.profile-photo-wrapper {<br>` +
+        `&nbsp;&nbsp;width: ${size}px; height: ${size}px; border-radius: ${radius}px;<br>` +
+        `}<br>` +
+        `.profile-photo-wrapper img {<br>` +
+        `&nbsp;&nbsp;transform: scale(${zoom}); transform-origin: 50% ${posY}%;<br>` +
+        `}`;
+    }
+
+    sizeSlider.addEventListener('input', updatePreview);
+    zoomSlider.addEventListener('input', updatePreview);
+    posYSlider.addEventListener('input', updatePreview);
+    radiusSlider.addEventListener('input', updatePreview);
+
+    updatePreview();
+  </script>
+</body>
+</html>
