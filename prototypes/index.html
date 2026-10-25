@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Showcase de Protótipos — Portfólio João Francisco</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <style>
+    :root {
+      --bg: #090a0f;
+      --header-bg: #11141d;
+      --border: rgba(255, 255, 255, 0.08);
+      --accent: #6366f1;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* Top Showcase Bar */
+    header {
+      background: var(--header-bg);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      z-index: 100;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: -0.01em;
+    }
+
+    .brand-sub {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Version Selector Tabs */
+    .version-tabs {
+      display: flex;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 4px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      gap: 4px;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .tab-btn:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .tab-btn.active {
+      background: var(--accent);
+      color: #ffffff;
+      box-shadow: 0 2px 10px rgba(99, 102, 241, 0.4);
+    }
+
+    /* Viewport Resizer & Actions */
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .viewport-btn-group {
+      display: flex;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 2px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    .viewport-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 6px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: all 0.2s ease;
+    }
+
+    .viewport-btn:hover, .viewport-btn.active {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .btn-external {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border);
+      color: var(--text);
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-external:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+    }
+
+    /* Info Strip */
+    .info-strip {
+      background: #0d0f17;
+      border-bottom: 1px solid var(--border);
+      padding: 8px 24px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .info-skills {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .skill-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      background: rgba(99, 102, 241, 0.15);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      color: #a5b4fc;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    /* Main Preview Container */
+    .preview-stage {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #050608;
+      overflow: hidden;
+      padding: 16px;
+    }
+
+    .iframe-wrapper {
+      width: 100%;
+      height: 100%;
+      background: #000;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+      overflow: hidden;
+      transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <span class="material-symbols-outlined" style="color: var(--accent);">palette</span>
+      <div>
+        <h1 class="brand-title">5 Versões Estéticas do Portfólio</h1>
+        <p class="brand-sub">João Francisco &bull; Redesign Prototypes</p>
+      </div>
+    </div>
+
+    <!-- Version Switcher -->
+    <nav class="version-tabs" aria-label="Seletor de protótipos">
+      <button class="tab-btn active" onclick="loadVersion('v1-apple-spatial.html', this, 'Apple Spatial (VisionOS & Glass)', ['apple-design', 'animate'])">
+        <span>V1: Apple Spatial</span>
+      </button>
+      <button class="tab-btn" onclick="loadVersion('v2-linear-craft.html', this, 'Linear / Dark Craft (Emil Kowalski)', ['emil-design-eng', 'frontend-design'])">
+        <span>V2: Linear Craft</span>
+      </button>
+      <button class="tab-btn" onclick="loadVersion('v3-editorial-swiss.html', this, 'Swiss Typographic Journal', ['frontend-design', 'modern-web-guidance'])">
+        <span>V3: Swiss Editorial</span>
+      </button>
+      <button class="tab-btn" onclick="loadVersion('v4-terminal-telemetry.html', this, 'Cyber-Terminal & Telemetry CLI', ['modern-web-guidance', 'emil-design-eng'])">
+        <span>V4: Terminal Telemetry</span>
+      </button>
+      <button class="tab-btn" onclick="loadVersion('v5-bento-warm.html', this, 'Neo-Bento Craft (Warm Terracotta)', ['frontend-design', 'mobile-native'])">
+        <span>V5: Neo-Bento</span>
+      </button>
+    </nav>
+
+    <!-- Controls -->
+    <div class="controls">
+      <div class="viewport-btn-group">
+        <button class="viewport-btn active" onclick="setViewport('100%', this)" title="Desktop (100%)">
+          <span class="material-symbols-outlined" style="font-size: 18px;">desktop_windows</span>
+        </button>
+        <button class="viewport-btn" onclick="setViewport('768px', this)" title="Tablet (768px)">
+          <span class="material-symbols-outlined" style="font-size: 18px;">tablet_mac</span>
+        </button>
+        <button class="viewport-btn" onclick="setViewport('390px', this)" title="Mobile (390px)">
+          <span class="material-symbols-outlined" style="font-size: 18px;">smartphone</span>
+        </button>
+      </div>
+
+      <a href="avatar-preview.html" target="_blank" rel="noopener noreferrer" class="btn-external" style="border-color: rgba(249, 115, 22, 0.4); color: #f97316;">
+        <span class="material-symbols-outlined" style="font-size: 16px;">crop_free</span>
+        <span>Ajustar Foto</span>
+      </a>
+
+      <a id="btnOpenFull" href="v1-apple-spatial.html" target="_blank" rel="noopener noreferrer" class="btn-external">
+        <span>Abrir em Tela Cheia</span>
+        <span class="material-symbols-outlined" style="font-size: 16px;">open_in_new</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Info Bar -->
+  <div class="info-strip">
+    <div id="versionDesc">
+      <strong>V1: Apple Spatial</strong> &bull; Profundidade translúcida com blur, iluminação ambiente, cantos squircles e floating island nav.
+    </div>
+    <div class="info-skills" id="skillsTagWrap">
+      <span>Skills aplicadas:</span>
+      <span class="skill-tag">apple-design</span>
+      <span class="skill-tag">animate</span>
+    </div>
+  </div>
+
+  <!-- Preview Area -->
+  <main class="preview-stage">
+    <div id="iframeWrapper" class="iframe-wrapper">
+      <iframe id="previewFrame" src="v1-apple-spatial.html" title="Visualizador de Protótipo"></iframe>
+    </div>
+  </main>
+
+  <script>
+    const descriptions = {
+      'v1-apple-spatial.html': {
+        desc: '<strong>V1: Apple Spatial</strong> • Profundidade translúcida com blur (28px), iluminação ambiente, cantos squircles amplos e floating island nav.',
+        skills: ['apple-design', 'animate', 'modern-web-guidance']
+      },
+      'v2-linear-craft.html': {
+        desc: '<strong>V2: Linear Craft</strong> • Foco no desenvolvedor e precisão cirúrgica de Emil Kowalski. Sidebar fixa com status online, grid escuro sutil e feed técnico contínuo.',
+        skills: ['emil-design-eng', 'frontend-design']
+      },
+      'v3-editorial-swiss.html': {
+        desc: '<strong>V3: Swiss Editorial</strong> • Design suíço de alto contraste, tipografia serifada de luxo (Newsreader), numeração monumental (01..06) e layout de dossiê técnico.',
+        skills: ['frontend-design', 'modern-web-guidance']
+      },
+      'v4-terminal-telemetry.html': {
+        desc: '<strong>V4: Cyber-Terminal Telemetry</strong> • Painel de observabilidade técnica e CLI com cores neon hacker (#00f59b), status de pipelines em tempo real e visual de console.',
+        skills: ['modern-web-guidance', 'emil-design-eng']
+      },
+      'v5-bento-warm.html': {
+        desc: '<strong>V5: Neo-Bento Warm Craft</strong> • Bento Grid modular assimétrico, estética aveludada com toques calorosos em terracota/laranja, card herói de Agente IA e fluidez responsiva.',
+        skills: ['frontend-design', 'mobile-native', 'animate']
+      }
+    };
+
+    function loadVersion(file, btn, name, skills) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      
+      const frame = document.getElementById('previewFrame');
+      frame.src = file;
+      document.getElementById('btnOpenFull').href = file;
+
+      const meta = descriptions[file];
+      if (meta) {
+        document.getElementById('versionDesc').innerHTML = meta.desc;
+        const tagsHtml = '<span>Skills aplicadas:</span> ' + meta.skills.map(s => `<span class="skill-tag">${s}</span>`).join(' ');
+        document.getElementById('skillsTagWrap').innerHTML = tagsHtml;
+      }
+    }
+
+    function setViewport(width, btn) {
+      document.querySelectorAll('.viewport-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const wrapper = document.getElementById('iframeWrapper');
+      wrapper.style.width = width;
+    }
+  </script>
+</body>
+</html>
+

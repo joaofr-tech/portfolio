@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>João Francisco — Fullstack Portfolio (Neo-Bento Craft)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <style>
+    :root {
+      --bg: #0c0e14;
+      --card-bg: #141721;
+      --card-bg-subtle: #191d2a;
+      --card-border: rgba(255, 255, 255, 0.08);
+      --card-border-hover: rgba(249, 115, 22, 0.4);
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-tertiary: #64748b;
+      --accent: #f97316; /* Warm Terracotta / Orange */
+      --accent-glow: rgba(249, 115, 22, 0.15);
+      --warm-amber: #fbbf24;
+      --radius-bento: 24px;
+      --radius-sm: 12px;
+      --font-main: 'Plus Jakarta Sans', sans-serif;
+      --font-display: 'Space Grotesk', sans-serif;
+      --spring: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-main);
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 40px 20px 80px;
+    }
+
+    .bento-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Top Warm Bar */
+    .bento-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+      padding: 16px 28px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 9999px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 1rem;
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .logo-badge {
+      background: var(--accent);
+      color: #000;
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      font-size: 0.8rem;
+      font-weight: 800;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    /* Master Bento Grid */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 20px;
+    }
+
+    /* Generic Bento Card */
+    .bento-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-bento);
+      padding: 32px;
+      transition: all 0.3s var(--spring);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .bento-card:hover {
+      border-color: var(--card-border-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Profile / Identity Card (Col 1-4) */
+    .card-profile {
+      grid-column: span 4;
+      justify-content: space-between;
+      background: radial-gradient(circle at 10% 10%, rgba(249, 115, 22, 0.08), transparent 50%), var(--card-bg);
+    }
+
+    .profile-photo-wrapper {
+      width: 158px;
+      height: 158px;
+      border-radius: 34px;
+      overflow: hidden;
+      border: 2px solid var(--card-border);
+      margin-bottom: 20px;
+      background: #1e2433;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    .profile-photo-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(2.6);
+      transform-origin: 50% 50%;
+      transition: transform 0.4s var(--spring);
+    }
+
+    .card-profile:hover .profile-photo-wrapper img {
+      transform: scale(2.72);
+    }
+
+    .card-profile-tag {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .card-profile-name {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+
+    .card-profile-bio {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .social-row-bento {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn-bento-icon {
+      flex: 1;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--card-bg-subtle);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-sm);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .btn-bento-icon:hover {
+      background: var(--accent);
+      color: #000;
+      border-color: var(--accent);
+    }
+
+    /* Featured Project Hero Card (Col 5-12) */
+    .card-featured {
+      grid-column: span 8;
+      background: linear-gradient(135deg, rgba(249, 115, 22, 0.12) 0%, rgba(20, 23, 33, 0.9) 60%), var(--card-bg);
+      border-color: rgba(249, 115, 22, 0.25);
+      justify-content: space-between;
+    }
+
+    .featured-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(249, 115, 22, 0.18);
+      color: var(--accent);
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      align-self: flex-start;
+      margin-bottom: 16px;
+    }
+
+    .featured-title {
+      font-family: var(--font-display);
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.25;
+      margin-bottom: 14px;
+    }
+
+    .featured-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 24px;
+      max-width: 680px;
+    }
+
+    /* Standard Bento Project Cards (Cols 4) */
+    .col-4 {
+      grid-column: span 4;
+    }
+
+    .col-6 {
+      grid-column: span 6;
+    }
+
+    .bento-project-title {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .bento-project-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .bento-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+
+    .bento-tag {
+      font-size: 0.72rem;
+      background: var(--card-bg-subtle);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+
+    .bento-card-actions {
+      margin-top: auto;
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn-bento-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-bento-primary {
+      background: var(--accent);
+      color: #000;
+    }
+
+    .btn-bento-primary:hover {
+      background: #ea580c;
+    }
+
+    .btn-bento-secondary {
+      background: var(--card-bg-subtle);
+      color: var(--text);
+      border: 1px solid var(--card-border);
+    }
+
+    .btn-bento-secondary:hover {
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Article Bento Cards */
+    .article-thumb-bento {
+      height: 130px;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+
+    .article-thumb-bento img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Certifications Bento Strip */
+    .cert-badge-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      background: var(--card-bg-subtle);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-sm);
+      margin-bottom: 10px;
+    }
+
+    .cert-badge-row:last-child {
+      margin-bottom: 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 0;
+      color: var(--text-tertiary);
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 960px) {
+      .bento-grid {
+        grid-template-columns: 1fr;
+      }
+      .card-profile, .card-featured, .col-4, .col-6 {
+        grid-column: span 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bento-container">
+    <!-- Bento Nav -->
+    <header class="bento-nav">
+      <a href="#" class="nav-logo">
+        <span class="logo-badge">JF</span>
+        <span>João Francisco</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#artigos">Artigos</a></li>
+        <li><a href="#certificados">Certificações</a></li>
+      </ul>
+      <span style="font-size: 0.78rem; color: var(--accent); font-weight: 600;">PUC Minas &bull; 2026</span>
+    </header>
+
+    <!-- Bento Grid Showcase -->
+    <div class="bento-grid">
+      <!-- 1. Profile Bento Card (Col 4) -->
+      <aside class="bento-card card-profile">
+        <div>
+          <div class="profile-photo-wrapper">
+            <img src="../public/assets/2b.jpg" alt="Foto João Francisco" />
+          </div>
+          <p class="card-profile-tag">Desenvolvedor Fullstack</p>
+          <h1 class="card-profile-name">João Francisco</h1>
+          <p class="card-profile-bio">
+            Estudante de Engenharia de Software na PUC Minas. Construo aplicações completas com Spring Boot e React, aliando uma base sólida de backend ao interesse contínuo por engenharia de dados e aplicações práticas com IA.
+          </p>
+          <div class="bento-tags">
+            <span class="bento-tag">Java &amp; Spring Boot</span>
+            <span class="bento-tag">React &amp; JS</span>
+            <span class="bento-tag">Dados &amp; IA</span>
+          </div>
+        </div>
+
+        <div class="social-row-bento">
+          <a href="https://github.com/joaofr-tech" target="_blank" rel="noopener noreferrer" class="btn-bento-icon">
+            <span class="material-symbols-outlined" style="font-size: 16px;">code</span>
+            <span>GitHub</span>
+          </a>
+          <a href="https://www.linkedin.com/in/jo%C3%A3o-francisco-ramos/" target="_blank" rel="noopener noreferrer" class="btn-bento-icon">
+            <span class="material-symbols-outlined" style="font-size: 16px;">work</span>
+            <span>LinkedIn</span>
+          </a>
+        </div>
+      </aside>
+
+      <!-- 2. Master Featured Project (Col 8) -->
+      <article class="bento-card card-featured">
+        <div>
+          <span class="featured-pill">
+            <span class="material-symbols-outlined" style="font-size: 14px;">auto_awesome</span>
+            <span>Destaque &bull; Agente Autônomo</span>
+          </span>
+          <h2 class="featured-title">EstágioBot AI — Agente Autônomo para Busca de Vagas</h2>
+          <p class="featured-desc">
+            Agente autônomo baseado no Google Antigravity CLI que realiza buscas contínuas por vagas de estágio em Engenharia de Software, Dados e Inteligência Artificial. Filtra automaticamente oportunidades compatíveis com turno matutino, alimenta um dashboard local minimalista com auditoria e métricas de varredura, e dispara notificações por e-mail em React sempre que novas vagas são encontradas.
+          </p>
+          <div class="bento-tags">
+            <span class="bento-tag" style="color: var(--accent);">Agentes de IA</span>
+            <span class="bento-tag">Google Antigravity CLI</span>
+            <span class="bento-tag">Node.js</span>
+            <span class="bento-tag">React</span>
+            <span class="bento-tag">PowerShell</span>
+          </div>
+        </div>
+        <div class="bento-card-actions">
+          <a href="https://github.com/joaofr-tech/estagio-bot-ai" target="_blank" rel="noopener noreferrer" class="btn-bento-link btn-bento-primary">
+            <span class="material-symbols-outlined" style="font-size: 16px;">code</span>
+            <span>Repositório no GitHub</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- 3. Cloud Data Pipeline (Col 4) -->
+      <article class="bento-card col-4">
+        <div>
+          <h3 class="bento-project-title">Cloud Data Pipeline: Azure &amp; Medalhão</h3>
+          <p class="bento-project-desc">
+            Pipeline de dados ponta a ponta implementando a Arquitetura Medalhão (Bronze, Silver e Gold). Extrai cotações cambiais em tempo real via API REST, armazena payloads particionados no Azure Blob Storage, limpa para Parquet e ingere em SQL analítico.
+          </p>
+          <div class="bento-tags">
+            <span class="bento-tag">Engenharia de Dados</span>
+            <span class="bento-tag">Azure Blob</span>
+            <span class="bento-tag">Python &amp; Parquet</span>
+            <span class="bento-tag">SQL</span>
+          </div>
+        </div>
+        <div class="bento-card-actions">
+          <a href="https://github.com/joaofr-tech/cloud-data-pipeline-azure" target="_blank" rel="noopener noreferrer" class="btn-bento-link btn-bento-secondary">
+            <span class="material-symbols-outlined" style="font-size: 16px;">code</span>
+            <span>Código GitHub</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- 4. Movie App (Col 4) -->
+      <article class="bento-card col-4">
+        <div>
+          <h3 class="bento-project-title">Movie App — TMDB Explorer</h3>
+          <p class="bento-project-desc">
+            Aplicação web moderna e responsiva para exploração e busca de filmes em tempo real integrada à API TMDB. Conta com gerenciamento de estado global, persistência de favoritos no localStorage com feedback visual e Dark Mode.
+          </p>
+          <div class="bento-tags">
+            <span class="bento-tag">Frontend</span>
+            <span class="bento-tag">React 19</span>
+            <span class="bento-tag">Vite</span>
+            <span class="bento-tag">Context API</span>
+          </div>
+        </div>
+        <div class="bento-card-actions">
+          <a href="https://github.com/joaofr-tech/movie-react-app" target="_blank" rel="noopener noreferrer" class="btn-bento-link btn-bento-secondary">
+            <span class="material-symbols-outlined" style="font-size: 16px;">code</span>
+            <span>Código GitHub</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- 5. ETL Medalhão (Col 4) -->
+      <article class="bento-card col-4">
+        <div>
+          <h3 class="bento-project-title">Pipeline ETL com PostgreSQL</h3>
+          <p class="bento-project-desc">
+            Arquitetura em três camadas (Bronze, Silver e Gold) para processamento e enriquecimento de cadastros via API pública. Converte dados brutos para Parquet otimizado e popula banco PostgreSQL em Docker para análise relacional no DBeaver.
+          </p>
+          <div class="bento-tags">
+            <span class="bento-tag">Engenharia de Dados</span>
+            <span class="bento-tag">Python</span>
+            <span class="bento-tag">PostgreSQL</span>
+            <span class="bento-tag">Docker</span>
+          </div>
+        </div>
+        <div class="bento-card-actions">
+          <a href="https://github.com/joaofr-tech/ETL-medalion-architecture" target="_blank" rel="noopener noreferrer" class="btn-bento-link btn-bento-secondary">
+            <span class="material-symbols-outlined" style="font-size: 16px;">code</span>
+            <span>Código GitHub</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- 6. Album26 (Col 6) -->
+      <article class="bento-card col-6">
+        <div>
+          <h3 class="bento-project-title">Album26 — PWA Copa do Mundo 2026</h3>
+          <p class="bento-project-desc">
+            PWA mobile-first e offline para controle da coleção de figurinhas da Copa do Mundo 2026. Conta com registro por voz e ditado natural, conferência inteligente de listas do WhatsApp e persistência local segura (sem backend).
+          </p>
+          <div class="bento-tags">
+            <span class="bento-tag">Frontend</span>
+            <span class="bento-tag">PWA / Mobile</span>
+            <span class="bento-tag">Vanilla JS</span>
+            <span class="bento-tag">Cloudflare Workers</span>
+          </div>
+        </div>
+        <div class="bento-card-actions">
+          <a href="https://pwa-album-copa-sdd.jf756061.workers.dev" target="_blank" rel="noopener noreferrer" class="btn-bento-link btn-bento-primary">
+            <span class="material-symbols-outlined" style="font-size: 16px;">open_in_new</span>
+            <span>Testar Demo</span>
+          </a>
+          <a href="https://github.com/joaofr-tech/Album26" target="_blank" rel="noopener noreferrer" class="btn-bento-link btn-bento-secondary">
+            <span class="material-symbols-outlined" style="font-size: 16px;">code</span>
+            <span>Código</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- 7. Habitus (Col 6) -->
+      <article class="bento-card col-6">
+        <div>
+          <h3 class="bento-project-title">Habitus — Consolidação de Hábitos</h3>
+          <p class="bento-project-desc">
+            Aplicação web minimalista para calcular e acompanhar a consistência de hábitos e metas pessoais. Permite registros por oportunidade, métricas de adesão e persistência 100% local via localStorage.
+          </p>
+          <div class="bento-tags">
+            <span class="bento-tag">Frontend</span>
+            <span class="bento-tag">React</span>
+            <span class="bento-tag">TypeScript</span>
+            <span class="bento-tag">Cloudflare Pages</span>
+          </div>
+        </div>
+        <div class="bento-card-actions">
+          <a href="https://kpi-habits.jf756061.workers.dev/" target="_blank" rel="noopener noreferrer" class="btn-bento-link btn-bento-primary">
+            <span class="material-symbols-outlined" style="font-size: 16px;">open_in_new</span>
+            <span>Testar Demo</span>
+          </a>
+          <a href="https://github.com/joaofr-tech/kpi-habits" target="_blank" rel="noopener noreferrer" class="btn-bento-link btn-bento-secondary">
+            <span class="material-symbols-outlined" style="font-size: 16px;">code</span>
+            <span>Código</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- 8. Articles Bento (Col 6) -->
+      <section id="artigos" class="bento-card col-6">
+        <h3 class="bento-project-title" style="display: flex; align-items: center; gap: 8px;">
+          <span class="material-symbols-outlined" style="color: var(--accent);">article</span>
+          <span>Artigos Técnicos</span>
+        </h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px;">Guias sobre agentes de IA e tooling moderno</p>
+        
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <a href="#/artigo/construindo-agente-ia-local-pydanticai-ollama" style="text-decoration: none; color: inherit; display: flex; gap: 12px; align-items: center; background: var(--card-bg-subtle); padding: 12px; border-radius: 12px; border: 1px solid var(--card-border);">
+            <img src="../public/local-ai-agent-cover.jpg" alt="Artigo 1" style="width: 70px; height: 50px; border-radius: 6px; object-fit: cover;" />
+            <div>
+              <p style="font-size: 0.85rem; font-weight: 600; color: #fff;">Agente de IA 100% Local com PydanticAI</p>
+              <span style="font-size: 0.72rem; color: var(--accent);">Setembro 2026 &bull; 3 min</span>
+            </div>
+          </a>
+
+          <a href="#/artigo/como-usar-claude-code-gratuitamente" style="text-decoration: none; color: inherit; display: flex; gap: 12px; align-items: center; background: var(--card-bg-subtle); padding: 12px; border-radius: 12px; border: 1px solid var(--card-border);">
+            <img src="../public/claude-code-cover.jpg" alt="Artigo 2" style="width: 70px; height: 50px; border-radius: 6px; object-fit: cover;" />
+            <div>
+              <p style="font-size: 0.85rem; font-weight: 600; color: #fff;">Como eu uso o Claude Code gratuitamente?</p>
+              <span style="font-size: 0.72rem; color: var(--accent);">Setembro 2026 &bull; 3 min</span>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- 9. Certifications Bento (Col 6) -->
+      <section id="certificados" class="bento-card col-6">
+        <h3 class="bento-project-title" style="display: flex; align-items: center; gap: 8px;">
+          <span class="material-symbols-outlined" style="color: var(--warm-amber);">workspace_premium</span>
+          <span>Certificações</span>
+        </h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px;">Formação complementar e proficiência</p>
+
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <div class="cert-badge-row">
+            <div>
+              <strong style="font-size: 0.88rem; color: #fff;">CS50's Intro to Computer Science</strong>
+              <p style="font-size: 0.75rem; color: var(--text-muted);">Harvard University &bull; 2025</p>
+            </div>
+            <a href="../public/CS50x-cetified.pdf" target="_blank" rel="noopener noreferrer" class="btn-bento-link btn-bento-secondary" style="padding: 4px 10px; font-size: 0.75rem;">
+              PDF
+            </a>
+          </div>
+
+          <div class="cert-badge-row">
+            <div>
+              <strong style="font-size: 0.88rem; color: #fff;">EF SET English C1 Advanced</strong>
+              <p style="font-size: 0.75rem; color: var(--text-muted);">Score 62/100 &bull; 2026</p>
+            </div>
+            <a href="https://cert.efset.org/en/ZTsv7T" target="_blank" rel="noopener noreferrer" class="btn-bento-link btn-bento-secondary" style="padding: 4px 10px; font-size: 0.75rem;">
+              Verificar
+            </a>
+          </div>
+
+          <div class="cert-badge-row">
+            <div>
+              <strong style="font-size: 0.88rem; color: #fff;">Claude Code 101</strong>
+              <p style="font-size: 0.75rem; color: var(--text-muted);">Claude Academy &bull; 2026</p>
+            </div>
+            <a href="https://academy.claude.com/verify/0007973ade5f98e19de2707670fc0eaa" target="_blank" rel="noopener noreferrer" class="btn-bento-link btn-bento-secondary" style="padding: 4px 10px; font-size: 0.75rem;">
+              Verificar
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2026 João Francisco &bull; Portfólio Neo-Bento Craft &bull; Estudante de Engenharia de Software na PUC Minas</p>
+    </footer>
+  </div>
+</body>
+</html>
+
