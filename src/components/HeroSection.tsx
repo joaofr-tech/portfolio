@@ -1,32 +1,29 @@
+import { useLanguage } from '../context/LanguageContext'
+
 export function HeroSection() {
+  const { t } = useLanguage()
+
   return (
     <section className="hero" id="hero">
       <div className="wrap">
-        <div className="hero-kicker mono">joão francisco / software engineering &amp; data</div>
-        <h1>Construo sistemas robustos, pipelines de dados e agentes autônomos.</h1>
-        <p className="hero-desc">
-          Estudante de Engenharia de Software na PUC Minas. Desenvolvo aplicações completas com Spring Boot e React,
-          aliando uma base sólida de backend e infraestrutura a pipelines analíticos de dados e agentes inteligentes.
-        </p>
+        <div className="hero-kicker mono">{t.hero.kicker}</div>
+        <h1>{t.hero.headline}</h1>
+        <p className="hero-desc">{t.hero.description}</p>
 
         {/* Featured Card: EstágioBot AI */}
         <article className="featured-card">
           <div className="featured-kicker mono">
-            destaque / agente autônomo
+            {t.hero.featured.kicker}
           </div>
-          <h2 className="featured-title">EstágioBot AI — Agente Autônomo para Busca de Vagas</h2>
-          <p className="featured-desc">
-            Agente autônomo baseado no Google Antigravity CLI que realiza buscas contínuas por vagas de estágio em
-            Engenharia de Software, Dados e Inteligência Artificial. Filtra automaticamente oportunidades compatíveis com
-            o turno matutino, alimenta um dashboard local minimalista com auditoria de métricas e dispara alertas por e-mail.
-          </p>
+          <h2 className="featured-title">{t.hero.featured.title}</h2>
+          <p className="featured-desc">{t.hero.featured.description}</p>
 
           <div className="tag-list" aria-label="Tecnologias do projeto principal">
-            <span className="tag-item highlight">Agentes de IA</span>
-            <span className="tag-item">Google Antigravity CLI</span>
-            <span className="tag-item">Node.js</span>
-            <span className="tag-item">React</span>
-            <span className="tag-item">PowerShell</span>
+            {t.hero.featured.tags.map((tag, i) => (
+              <span key={tag} className={`tag-item ${i === 0 ? 'highlight' : ''}`}>
+                {tag}
+              </span>
+            ))}
           </div>
 
           <div>
@@ -39,7 +36,7 @@ export function HeroSection() {
               <span className="material-symbols-outlined" style={{ fontSize: '16px' }} aria-hidden="true">
                 code
               </span>
-              <span>Repositório no GitHub</span>
+              <span>{t.hero.featured.repoBtn}</span>
             </a>
           </div>
         </article>

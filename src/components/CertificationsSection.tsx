@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { asset } from '../paths'
+import { useLanguage } from '../context/LanguageContext'
 
 function ClaudeIcon() {
   return (
@@ -12,55 +12,29 @@ function ClaudeIcon() {
   )
 }
 
-interface Certification {
-  icon: ReactNode
-  title: string
-  institution: string
-  year: string
-  link: string
+const iconsMap: Record<string, ReactNode> = {
+  cs50: <span style={{ fontSize: '1.25rem' }}>🎓</span>,
+  efset: <span style={{ fontSize: '1.25rem' }}>🌎</span>,
+  claude: <ClaudeIcon />,
 }
 
-const certifications: Certification[] = [
-  {
-    icon: <span style={{ fontSize: '1.25rem' }}>🎓</span>,
-    title: "CS50's Introduction to Computer Science",
-    institution: 'Harvard University',
-    year: '2025',
-    link: asset('CS50x-cetified.pdf'),
-  },
-  {
-    icon: <span style={{ fontSize: '1.25rem' }}>🌎</span>,
-    title: 'EF SET English Certificate 62/100 (C1 Advanced)',
-    institution: 'EF SET',
-    year: '2026',
-    link: 'https://cert.efset.org/en/ZTsv7T',
-  },
-  {
-    icon: <ClaudeIcon />,
-    title: 'Claude Code 101',
-    institution: 'Claude Academy',
-    year: '2026',
-    link: 'https://academy.claude.com/verify/0007973ade5f98e19de2707670fc0eaa',
-  },
-]
-
 export function CertificationsSection() {
+  const { t } = useLanguage()
+
   return (
     <section id="certificados" className="document-section">
       <div className="wrap">
         <header className="section-header">
-          <p className="mono">05 / certificações</p>
-          <h2>Formação continuada e proficiência comprovada.</h2>
-          <p className="section-intro">
-            Certificações técnicas e acadêmicas com links diretos de emissão e credenciamento.
-          </p>
+          <p className="mono">{t.certifications.kicker}</p>
+          <h2>{t.certifications.title}</h2>
+          <p className="section-intro">{t.certifications.subtitle}</p>
         </header>
 
         <div className="cert-table">
-          {certifications.map((cert) => (
+          {t.certifications.items.map((cert) => (
             <div key={cert.title} className="cert-row">
               <div className="cert-main">
-                <div className="cert-icon">{cert.icon}</div>
+                <div className="cert-icon">{iconsMap[cert.iconType]}</div>
                 <div>
                   <h3 className="cert-title">{cert.title}</h3>
                   <p className="cert-inst">
@@ -75,12 +49,12 @@ export function CertificationsSection() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-action"
-                  title="Verificar certificado"
+                  title={cert.title}
                 >
                   <span className="material-symbols-outlined" style={{ fontSize: '15px' }} aria-hidden="true">
                     open_in_new
                   </span>
-                  <span>Verificar</span>
+                  <span>{t.certifications.verifyBtn}</span>
                 </a>
               </div>
             </div>

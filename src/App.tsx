@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
+import { LanguageProvider } from './context/LanguageContext'
+import { LanguageSwitcher } from './components/LanguageSwitcher'
 import { Sidebar } from './components/Sidebar'
 import Profile from './pages/Profile'
 import ArticlePage from './pages/ArticlePage'
 import { articles } from './data/articles'
 
-export default function App() {
+function PortfolioLayout() {
   const [hash, setHash] = useState(window.location.hash)
   const [activeSection, setActiveSection] = useState('sobre')
 
@@ -40,13 +42,17 @@ export default function App() {
     if (currentArticle) {
       window.location.hash = `#${id}`
       setTimeout(() => {
-        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+        const target =
+          document.getElementById(id) ||
+          (id === 'ferramentas' ? document.getElementById('toolbox') : null)
+        target?.scrollIntoView({ behavior: 'smooth' })
       }, 80)
     }
   }
 
   return (
     <div className="site-layout">
+      <LanguageSwitcher />
       <Sidebar activeSection={activeSection} onNavigate={handleNavigate} />
       <main className="main-content">
         {currentArticle ? (
@@ -56,5 +62,13 @@ export default function App() {
         )}
       </main>
     </div>
+  )
+}
+
+export default function App() {
+  return (
+    <LanguageProvider>
+      <PortfolioLayout />
+    </LanguageProvider>
   )
 }

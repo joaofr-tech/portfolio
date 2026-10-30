@@ -1,5 +1,6 @@
 import type { ComponentType } from 'react'
 import type { Article } from '../data/articles'
+import { useLanguage } from '../context/LanguageContext'
 import ClaudeCodeArticle from '../components/articles/ClaudeCodeArticle'
 import LocalAiAgentArticle from '../components/articles/LocalAiAgentArticle'
 
@@ -14,38 +15,41 @@ const ARTICLE_COMPONENTS: Record<string, ComponentType> = {
 }
 
 export default function ArticlePage({ article, onBack }: ArticlePageProps) {
+  const { t } = useLanguage()
   const ContentComponent = ARTICLE_COMPONENTS[article.slug]
+
+  const localizedArticle = t.articles.items.find((a) => a.slug === article.slug) || article
 
   return (
     <article className="artigo-detalhe-container">
       <div className="artigo-nav-top">
-        <button type="button" onClick={onBack} className="btn-voltar" aria-label="Voltar para a página inicial">
+        <button type="button" onClick={onBack} className="btn-voltar" aria-label={t.articlePage.backBtn}>
           <span className="material-symbols-outlined" aria-hidden="true">arrow_back</span>
-          <span>Voltar para o portfólio</span>
+          <span>{t.articlePage.backBtn}</span>
         </button>
       </div>
 
       <header className="artigo-page-header">
         <div className="artigo-cover-wrapper">
-          <img src={article.coverImage} alt={`Capa do artigo: ${article.title}`} className="artigo-page-cover" />
+          <img src={localizedArticle.coverImage} alt={localizedArticle.title} className="artigo-page-cover" />
         </div>
 
-        <h1 className="artigo-page-title">{article.title}</h1>
+        <h1 className="artigo-page-title">{localizedArticle.title}</h1>
 
         <div className="artigo-meta-bar">
           <span className="artigo-autor">
             <span className="material-symbols-outlined" aria-hidden="true">person</span>
-            <span>{article.author}</span>
+            <span>{localizedArticle.author}</span>
           </span>
           <span className="meta-separator">•</span>
           <span className="artigo-data">
             <span className="material-symbols-outlined" aria-hidden="true">calendar_today</span>
-            <span>{article.date}</span>
+            <span>{localizedArticle.date}</span>
           </span>
           <span className="meta-separator">•</span>
           <span className="artigo-leitura">
             <span className="material-symbols-outlined" aria-hidden="true">schedule</span>
-            <span>{article.readTime}</span>
+            <span>{localizedArticle.readTime}</span>
           </span>
         </div>
       </header>
@@ -54,14 +58,14 @@ export default function ArticlePage({ article, onBack }: ArticlePageProps) {
         <ContentComponent />
       ) : (
         <div className="artigo-page-content">
-          <p className="artigo-lead">{article.summary}</p>
+          <p className="artigo-lead">{localizedArticle.summary}</p>
         </div>
       )}
 
       <footer className="artigo-page-footer">
-        <button type="button" onClick={onBack} className="btn-voltar" aria-label="Voltar para a página inicial">
+        <button type="button" onClick={onBack} className="btn-voltar" aria-label={t.articlePage.backBtn}>
           <span className="material-symbols-outlined" aria-hidden="true">arrow_back</span>
-          <span>Voltar para o portfólio</span>
+          <span>{t.articlePage.backBtn}</span>
         </button>
       </footer>
     </article>

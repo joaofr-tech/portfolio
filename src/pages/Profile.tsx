@@ -5,16 +5,19 @@ import { ProjectsSection } from '../components/ProjectsSection'
 import { ToolboxSection } from '../components/ToolboxSection'
 import { ArticlesSection } from '../components/ArticlesSection'
 import { CertificationsSection } from '../components/CertificationsSection'
+import { useLanguage } from '../context/LanguageContext'
 
 interface ProfileProps {
   onSectionChange?: (sectionId: string) => void
 }
 
 export default function Profile({ onSectionChange }: ProfileProps) {
+  const { t } = useLanguage()
+
   useEffect(() => {
     if (!onSectionChange) return
 
-    const sectionIds = ['hero', 'sobre', 'projetos', 'toolbox', 'artigos', 'certificados']
+    const sectionIds = ['hero', 'sobre', 'projetos', 'ferramentas', 'toolbox', 'artigos', 'certificados']
     const elements = sectionIds
       .map((id) => document.getElementById(id))
       .filter((el): el is HTMLElement => Boolean(el))
@@ -46,8 +49,8 @@ export default function Profile({ onSectionChange }: ProfileProps) {
       <CertificationsSection />
       <footer className="footer">
         <div className="wrap">
-          <p>João Francisco · Engenharia de Software &amp; Dados</p>
-          <span>Belo Horizonte · 2026</span>
+          <p>{t.footer.line1}</p>
+          <span>{t.footer.line2}</span>
         </div>
       </footer>
     </>

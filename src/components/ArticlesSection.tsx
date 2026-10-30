@@ -1,36 +1,36 @@
-import { articles } from '../data/articles'
+import { useLanguage } from '../context/LanguageContext'
 
 export function ArticlesSection() {
+  const { t } = useLanguage()
+
   return (
     <section id="artigos" className="document-section">
       <div className="wrap">
         <header className="section-header">
-          <p className="mono">04 / artigos</p>
-          <h2>Como eu penso.</h2>
-          <p className="section-intro">
-            Artigos sobre meus aprendizados, descobertas e reflexões.
-          </p>
+          <p className="mono">{t.articles.kicker}</p>
+          <h2>{t.articles.title}</h2>
+          <p className="section-intro">{t.articles.subtitle}</p>
         </header>
 
         {/* Post Tiles Grid like joaoac.com */}
-        <div className="article-grid" aria-label="Lista de artigos">
-          {articles.map((article) => (
+        <div className="article-grid" aria-label={t.articles.title}>
+          {t.articles.items.map((article) => (
             <a
               key={article.slug}
               href={`#/artigo/${article.slug}`}
               className="post-tile"
-              aria-label={`Ler artigo: ${article.title}`}
+              aria-label={`${article.title}`}
             >
               <div className="cover-box">
                 <img
                   src={article.coverImage}
-                  alt={`Capa de ${article.title}`}
+                  alt={article.title}
                   loading="lazy"
                 />
               </div>
 
               <div className="text">
-                <span className="eyebrow">{article.topicLabel || 'Artigo'}</span>
+                <span className="eyebrow">{article.topicLabel}</span>
                 <h3>{article.title}</h3>
                 <p>{article.summary}</p>
                 <time>

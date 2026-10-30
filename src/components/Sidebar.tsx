@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useLanguage } from '../context/LanguageContext'
 
 interface SidebarProps {
   activeSection: string
@@ -25,15 +26,8 @@ function LinkedinIcon() {
   )
 }
 
-const navLinks = [
-  { id: 'sobre', number: '01', label: 'Sobre' },
-  { id: 'projetos', number: '02', label: 'Projetos' },
-  { id: 'toolbox', number: '03', label: 'Toolbox' },
-  { id: 'artigos', number: '04', label: 'Artigos' },
-  { id: 'certificados', number: '05', label: 'Certificações' },
-]
-
 export function Sidebar({ activeSection, onNavigate }: SidebarProps) {
+  const { t } = useLanguage()
   const [mobileOpen, setMobileOpen] = useState(false)
 
   const handleLinkClick = (id: string) => {
@@ -63,13 +57,13 @@ export function Sidebar({ activeSection, onNavigate }: SidebarProps) {
           <span className="identity-mark">J</span>
           <span className="identity-copy">
             <strong>João Francisco</strong>
-            <small>software &amp; data</small>
+            <small>{t.sidebar.subtitle}</small>
           </span>
         </a>
 
         <div className="sidebar-status" title="Localização atual">
           <span className="status-dot" aria-hidden="true"></span>
-          <span>Belo Horizonte</span>
+          <span>{t.sidebar.status}</span>
         </div>
       </div>
 
@@ -88,29 +82,33 @@ export function Sidebar({ activeSection, onNavigate }: SidebarProps) {
       {/* Numbered Navigation */}
       <nav aria-label="Seções do documento">
         <ol className={`sidebar-links ${mobileOpen ? 'mobile-open' : ''}`}>
-          {navLinks.map((item) => (
-            <li key={item.id}>
-              <a
-                href={`#${item.id}`}
-                className={activeSection === item.id ? 'active' : ''}
-                onClick={(e) => {
-                  e.preventDefault()
-                  handleLinkClick(item.id)
-                  document.getElementById(item.id)?.scrollIntoView({ behavior: 'smooth' })
-                }}
-              >
-                <span className="nav-number">{item.number}</span>
-                <strong>{item.label}</strong>
-              </a>
-            </li>
-          ))}
+          {t.sidebar.nav.map((item) => {
+            const isMatch = activeSection === item.id || (item.id === 'ferramentas' && activeSection === 'toolbox')
+            return (
+              <li key={item.id}>
+                <a
+                  href={`#${item.id}`}
+                  className={isMatch ? 'active' : ''}
+                  onClick={(e) => {
+                    e.preventDefault()
+                    handleLinkClick(item.id)
+                    const target = document.getElementById(item.id) || (item.id === 'ferramentas' ? document.getElementById('toolbox') : null)
+                    target?.scrollIntoView({ behavior: 'smooth' })
+                  }}
+                >
+                  <span className="nav-number">{item.number}</span>
+                  <strong>{item.label}</strong>
+                </a>
+              </li>
+            )
+          })}
         </ol>
       </nav>
 
       {/* Bottom: Availability & Social */}
       <div className="sidebar-bottom">
         <span className="sidebar-availability">
-          aberto a projetos &amp; estágio
+          {t.sidebar.availability}
         </span>
         <div className="social-icons">
           <a

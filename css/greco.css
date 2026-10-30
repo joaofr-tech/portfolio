@@ -989,3 +989,55 @@ button {
     text-align: center;
   }
 }
+
+/* ==========================================================================
+   LANGUAGE SWITCHER (GRECO STYLE)
+   ========================================================================== */
+
+.language-switcher {
+  z-index: 70;
+  border: 1px solid var(--line-dark);
+  color: var(--faint);
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  background: rgba(247, 246, 242, 0.92);
+  align-items: center;
+  gap: 0.38rem;
+  padding: 0.45rem 0.65rem;
+  font-family: var(--mono-font);
+  font-size: 0.68rem;
+  display: flex;
+  position: fixed;
+  top: 1.5rem;
+  right: 1.7rem;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.language-switcher:hover {
+  border-color: var(--ink);
+  background: var(--paper-deep);
+}
+
+.language-switcher i {
+  color: var(--line-dark);
+  font-style: normal;
+}
+
+.language-switcher .active {
+  color: var(--ink);
+  text-underline-offset: 3px;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .language-switcher {
+    top: 12px;
+    right: 56px;
+    padding: 0.35rem 0.52rem;
+  }
+}
