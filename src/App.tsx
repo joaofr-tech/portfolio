@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react'
-import { ThemeProvider } from './theme'
-import { Header } from './components/Header'
-import { Footer } from './components/Footer'
+import { Sidebar } from './components/Sidebar'
 import Profile from './pages/Profile'
 import ArticlePage from './pages/ArticlePage'
 import { articles } from './data/articles'
 
 export default function App() {
   const [hash, setHash] = useState(window.location.hash)
+  const [activeSection, setActiveSection] = useState('sobre')
 
   useEffect(() => {
     const onHashChange = () => {
@@ -33,20 +32,29 @@ export default function App() {
     window.location.hash = '#artigos'
     setTimeout(() => {
       document.getElementById('artigos')?.scrollIntoView({ behavior: 'smooth' })
-    }, 50)
+    }, 60)
+  }
+
+  const handleNavigate = (id: string) => {
+    setActiveSection(id)
+    if (currentArticle) {
+      window.location.hash = `#${id}`
+      setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+      }, 80)
+    }
   }
 
   return (
-    <ThemeProvider>
-      <Header />
-      {currentArticle ? (
-        <main>
+    <div className="site-layout">
+      <Sidebar activeSection={activeSection} onNavigate={handleNavigate} />
+      <main className="main-content">
+        {currentArticle ? (
           <ArticlePage article={currentArticle} onBack={handleBack} />
-        </main>
-      ) : (
-        <Profile />
-      )}
-      <Footer />
-    </ThemeProvider>
+        ) : (
+          <Profile onSectionChange={setActiveSection} />
+        )}
+      </main>
+    </div>
   )
 }
