@@ -6,9 +6,9 @@ export function ArticlesSection() {
       <div className="wrap">
         <header className="section-header">
           <p className="mono">04 / artigos</p>
-          <h2>Escrita técnica e guias práticos.</h2>
+          <h2>Como eu penso.</h2>
           <p className="section-intro">
-            Artigos aprofundados sobre ferramentas de terminal inteligente, agentes de IA autônomos e configurações práticas.
+            Artigos sobre meus aprendizados, descobertas e reflexões.
           </p>
         </header>
 

@@ -5,7 +5,6 @@ import { ProjectsSection } from '../components/ProjectsSection'
 import { ToolboxSection } from '../components/ToolboxSection'
 import { ArticlesSection } from '../components/ArticlesSection'
 import { CertificationsSection } from '../components/CertificationsSection'
-import { ContactSection } from '../components/ContactSection'
 
 interface ProfileProps {
   onSectionChange?: (sectionId: string) => void
@@ -15,7 +14,7 @@ export default function Profile({ onSectionChange }: ProfileProps) {
   useEffect(() => {
     if (!onSectionChange) return
 
-    const sectionIds = ['hero', 'sobre', 'projetos', 'toolbox', 'artigos', 'certificados', 'contato']
+    const sectionIds = ['hero', 'sobre', 'projetos', 'toolbox', 'artigos', 'certificados']
     const elements = sectionIds
       .map((id) => document.getElementById(id))
       .filter((el): el is HTMLElement => Boolean(el))
@@ -45,7 +44,12 @@ export default function Profile({ onSectionChange }: ProfileProps) {
       <ToolboxSection />
       <ArticlesSection />
       <CertificationsSection />
-      <ContactSection />
+      <footer className="footer">
+        <div className="wrap">
+          <p>João Francisco · Engenharia de Software &amp; Dados</p>
+          <span>Belo Horizonte · 2026</span>
+        </div>
+      </footer>
     </>
   )
 }
