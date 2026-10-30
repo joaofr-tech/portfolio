@@ -114,19 +114,24 @@ button {
 }
 
 .identity-mark {
-  width: 36px;
-  height: 36px;
-  background: var(--ink);
-  color: var(--paper);
+  width: 40px;
+  height: 40px;
+  border: 1.5px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--mono-font);
-  font-weight: 700;
-  font-size: 1.1rem;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.7rem;
+  line-height: 1;
   border-radius: 4px;
   flex-shrink: 0;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.sidebar-identity:hover .identity-mark {
+  background: rgba(0, 0, 0, 0.04);
 }
 
 .sidebar-identity:hover .identity-mark {
