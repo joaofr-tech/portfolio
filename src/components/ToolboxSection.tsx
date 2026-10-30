@@ -14,7 +14,7 @@ const toolboxData: ToolboxCategory[] = [
   },
   {
     category: 'Frontend & Web',
-    skills: ['React 19', 'TypeScript', 'JavaScript (ESNext)', 'Vite', 'HTML5 & CSS Moderno', 'PWA / Mobile-First'],
+    skills: ['React 19', 'TypeScript', 'JavaScript', 'Vite', 'HTML5 & CSS Moderno', 'PWA / Mobile-First'],
   },
   {
     category: 'IA & Automação',

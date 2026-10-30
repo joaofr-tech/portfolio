@@ -18,16 +18,10 @@ export function AboutSection() {
           </p>
 
           <p>
-            Tenho grande interesse em <strong>Engenharia de Dados</strong> — processamento batch/streaming,
-            arquiteturas em camadas (Bronze, Silver e Gold) e formatos colunares como Parquet — além do uso prático de
-            <strong> Agentes Autônomos de IA</strong> para resolver problemas do mundo real, como extração de dados e automação de rotinas complexas.
+            Tenho grande interesse em <strong>Engenharia de Dados</strong> com processamento batch/streaming,
+            arquiteturas em camadas (Bronze, Silver e Gold) e formatos colunares como Parquet, além do uso prático de
+            <strong> Agentes Autônomos de IA</strong> para resolver problemas do mundo real, como extração de dados e automação de rotinas.
           </p>
-
-          <div className="about-highlight-box">
-            <p>
-              <strong>Foco atual:</strong> Arquiteturas de microsserviços e APIs com Spring Boot, ingestão e transformação de dados com Python/Azure, e ferramentas de produtividade aumentada com IA.
-            </p>
-          </div>
         </div>
       </div>
     </section>
