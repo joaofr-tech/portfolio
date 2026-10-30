@@ -61,8 +61,9 @@ export function Sidebar({ activeSection, onNavigate }: SidebarProps) {
           </span>
         </a>
 
-        <div className="sidebar-status" title={t.sidebar.status} aria-label={t.sidebar.status}>
+        <div className="sidebar-status">
           <span className="status-dot" aria-hidden="true"></span>
+          <span>{t.sidebar.status}</span>
         </div>
       </div>
 

@@ -157,37 +157,26 @@ button {
 }
 
 .sidebar-status {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.8rem;
+  font-size: 0.76rem;
   color: var(--muted);
   font-family: var(--mono-font);
-  width: fit-content;
+  margin-top: 0.4rem;
+  background: transparent;
+  border: none;
+  padding: 0;
 }
 
 .status-dot {
+  background: var(--green);
+  border-radius: 50%;
   width: 7px;
   height: 7px;
-  background-color: var(--green);
-  border-radius: 50%;
+  box-shadow: 0 0 0 3px #2f6f4e1f;
   display: inline-block;
-  position: relative;
-}
-
-.status-dot::after {
-  content: '';
-  position: absolute;
-  inset: -3px;
-  border-radius: 50%;
-  border: 1px solid var(--green);
-  animation: pulse 2.2s infinite ease-in-out;
-}
-
-@keyframes pulse {
-  0% { transform: scale(0.9); opacity: 0.9; }
-  60% { transform: scale(1.8); opacity: 0; }
-  100% { transform: scale(0.9); opacity: 0; }
+  flex-shrink: 0;
 }
 
 /* Nav Links */
