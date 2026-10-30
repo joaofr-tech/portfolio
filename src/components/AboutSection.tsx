@@ -1,5 +1,3 @@
-import { asset } from '../paths'
-
 export function AboutSection() {
   return (
     <section id="sobre" className="document-section">
@@ -13,32 +11,11 @@ export function AboutSection() {
         </header>
 
         <div className="about-content">
-          <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start', flexWrap: 'wrap' }}>
-            <div
-              style={{
-                width: '88px',
-                height: '88px',
-                borderRadius: '6px',
-                overflow: 'hidden',
-                border: '1px solid var(--line)',
-                flexShrink: 0,
-                background: 'var(--paper-deep)',
-              }}
-            >
-              <img
-                src={asset('2b.jpg')}
-                alt="João Francisco"
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-              />
-            </div>
-            <div style={{ flex: '1 1 300px' }}>
-              <p>
-                Sou estudante de <strong>Engenharia de Software na Pontifícia Universidade Católica de Minas Gerais (PUC Minas)</strong>.
-                Minha formação e estudos são direcionados para a construção de arquiteturas completas e confiáveis,
-                integrando backend robusto em <strong>Java &amp; Spring Boot</strong> a aplicações modernas em <strong>React</strong>.
-              </p>
-            </div>
-          </div>
+          <p>
+            Sou estudante de <strong>Engenharia de Software na Pontifícia Universidade Católica de Minas Gerais (PUC Minas)</strong>.
+            Minha formação e estudos são direcionados para a construção de arquiteturas completas e confiáveis,
+            integrando backend robusto em <strong>Java &amp; Spring Boot</strong> a aplicações modernas em <strong>React</strong>.
+          </p>
 
           <p>
             Tenho grande interesse em <strong>Engenharia de Dados</strong> — processamento batch/streaming,
