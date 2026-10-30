@@ -370,18 +370,26 @@ button {
   border-color: var(--line-dark);
 }
 
+.featured-kicker,
 .featured-pill {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.5rem;
   font-family: var(--mono-font);
-  font-size: 0.76rem;
-  color: var(--green);
-  background: rgba(47, 111, 78, 0.08);
-  border: 1px solid rgba(47, 111, 78, 0.2);
-  padding: 0.25rem 0.6rem;
-  border-radius: 999px;
-  margin-bottom: 1rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  margin-bottom: 0.85rem;
+}
+
+.featured-kicker::before,
+.featured-pill::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background-color: var(--green);
+  border-radius: 1px;
 }
 
 .featured-title {

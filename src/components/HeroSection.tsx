@@ -11,11 +11,8 @@ export function HeroSection() {
 
         {/* Featured Card: EstágioBot AI */}
         <article className="featured-card">
-          <div className="featured-pill">
-            <span className="material-symbols-outlined" style={{ fontSize: '15px' }} aria-hidden="true">
-              auto_awesome
-            </span>
-            <span>Destaque • Agente Autônomo</span>
+          <div className="featured-kicker mono">
+            destaque / agente autônomo
           </div>
           <h2 className="featured-title">EstágioBot AI — Agente Autônomo para Busca de Vagas</h2>
           <p className="featured-desc">
