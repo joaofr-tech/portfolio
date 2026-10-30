@@ -8,6 +8,8 @@ export interface Article {
   date: string
   coverImage: string
   author: string
+  topic?: string
+  topicLabel?: string
 }
 
 export const articles: Article[] = [
@@ -20,6 +22,8 @@ export const articles: Article[] = [
     date: 'Setembro de 2026',
     author: 'João Francisco',
     coverImage: asset('local-ai-agent-cover.jpg'),
+    topic: 'ia',
+    topicLabel: 'IA & Agentes Locais',
   },
   {
     slug: 'como-usar-claude-code-gratuitamente',
@@ -30,5 +34,7 @@ export const articles: Article[] = [
     date: 'Setembro de 2026',
     author: 'João Francisco',
     coverImage: asset('claude-code-cover.jpg'),
+    topic: 'ferramentas',
+    topicLabel: 'Terminal & Produtividade',
   },
 ]
