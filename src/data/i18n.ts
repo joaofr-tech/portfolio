@@ -52,12 +52,12 @@ export const translations = {
       kicker: 'joão francisco / engenharia de software & dados',
       headline: 'Engenharia de software com foco em backend, dados e automação.',
       description:
-        'Estudante de Engenharia de Software na PUC Minas. Desenvolvo aplicações completas com Spring Boot e JavaScript, aliando uma base sólida de backend a pipelines de dados e agentes inteligentes.',
+        'Estudante de Engenharia de Software na PUC Minas. Construo serviços com Spring Boot e interfaces em JavaScript, com foco no fluxo de dados em pipelines e em automação com agentes locais.',
       featured: {
         kicker: 'destaque / agente autônomo',
         title: 'EstágioBot AI — Agente Autônomo para Busca de Vagas',
         description:
-          'Agente autônomo baseado no Google Antigravity CLI que realiza buscas contínuas por vagas de estágio em Engenharia de Software, Dados e Inteligência Artificial. Filtra automaticamente oportunidades compatíveis, alimenta um dashboard local minimalista com auditoria de métricas e dispara alertas por e-mail.',
+          'Agente construído com o Google Antigravity CLI para varrer vagas de estágio em tecnologia. Ele filtra oportunidades por requisitos técnicos, registra as métricas em um painel local e envia alertas por e-mail quando encontra novas posições.',
         tags: ['Agentes de IA', 'Google Antigravity CLI', 'Node.js', 'React', 'PowerShell'],
         repoBtn: 'Repositório no GitHub',
       },
@@ -66,14 +66,14 @@ export const translations = {
       kicker: '01 / sobre',
       title: 'Como eu penso e abordo a construção de software.',
       subtitle: '',
-      p1: 'Sou estudante de Engenharia de Software na Pontifícia Universidade Católica de Minas Gerais (PUC Minas). Minha formação e estudos são direcionados para a construção de arquiteturas completas e confiáveis, integrando backend robusto em Java & Spring Boot a aplicações modernas em React.',
+      p1: 'Curso Engenharia de Software na PUC Minas. No dia a dia, concentro meus estudos na criação de serviços em Java e Spring Boot com bancos relacionais, conectando essas APIs a interfaces diretas em JavaScript.',
       p2: 'Tenho grande interesse em Engenharia de Dados com processamento batch/streaming, arquiteturas em camadas (Bronze, Silver e Gold) e formatos colunares como Parquet, além do uso prático de Agentes Autônomos de IA para resolver problemas do mundo real, como extração de dados e automação de rotinas.',
     },
     projects: {
       kicker: '02 / projetos',
-      title: 'Aplicações, pipelines e ferramentas construídas.',
+      title: 'Projetos que construí e mantenho.',
       subtitle:
-        'Soluções completas com ênfase em arquitetura limpa, processamento eficiente de dados e código aberto no GitHub.',
+        'Código aberto no GitHub, com foco em fluxo de dados, APIs estruturadas e conciliação financeira.',
       liveBtn: 'Demonstração',
       codeBtn: 'Código',
       items: [
@@ -81,28 +81,28 @@ export const translations = {
           title: 'Cloud Data Pipeline: Arquitetura Medalhão com Azure e Python',
           tags: ['Engenharia de Dados', 'Azure Blob Storage', 'Python', 'Pandas & Parquet', 'SQL'],
           description:
-            'Pipeline de dados ponta a ponta implementando a Arquitetura Medalhão (Bronze, Silver e Gold). Extrai cotações cambiais em tempo real via API REST, armazena payloads brutos particionados no Azure Blob Storage, limpa e converte para Parquet colunar e ingere em banco SQL analítico com consultas para médias móveis e métricas de volatilidade.',
+            'Pipeline em três camadas (Bronze, Silver e Gold) que consome cotações cambiais de uma API REST. O sistema particiona os arquivos brutos no Azure Blob Storage, converte os dados limpos para Parquet e grava tabelas analíticas em SQL para cálculo de médias móveis e volatilidade.',
           githubUrl: 'https://github.com/joaofr-tech/cloud-data-pipeline-azure',
         },
         {
           title: 'Chat em Tempo Real: Mensageria Instantânea com Spring Boot & WebSocket',
           tags: ['Backend', 'Java', 'Spring Boot', 'WebSocket', 'STOMP & SockJS'],
           description:
-            'Aplicação de mensagens instantâneas e bidirecionais de baixa latência construída em Java com Spring Boot. Implementa arquitetura pub/sub com protocolo STOMP, fallback com SockJS e broker interno de mensagens para roteamento entre salas de bate-papo.',
+            'Serviço de chat em Java com Spring Boot e WebSockets. Usa o protocolo STOMP sobre um broker em memória para rotear mensagens entre salas, com SockJS como fallback para garantir compatibilidade com navegadores.',
           githubUrl: 'https://github.com/joaofr-tech/chat-em-tempo-real',
         },
         {
           title: 'Pipeline ETL com Arquitetura Medalhão e Enriquecimento de Dados',
           tags: ['Engenharia de Dados', 'Python', 'PostgreSQL', 'Docker'],
           description:
-            'Arquitetura em três camadas (Bronze, Silver e Gold) para processamento e enriquecimento de cadastros via API pública. Converte dados brutos para Parquet otimizado e popula banco PostgreSQL em Docker para análise relacional no DBeaver.',
+            'Pipeline em Python que consulta uma API pública de cadastros, valida os dados e os organiza nas camadas Bronze, Silver e Gold. O resultado final é salvo em formato Parquet e carregado em um banco PostgreSQL rodando em Docker.',
           githubUrl: 'https://github.com/joaofr-tech/ETL-medalion-architecture',
         },
         {
           title: 'Album26 — Controle da Copa do Mundo 2026',
           tags: ['Frontend', 'PWA / Mobile', 'JavaScript', 'Cloudflare Workers'],
           description:
-            'PWA mobile-first e offline para controle da coleção de figurinhas da Copa do Mundo 2026. Conta com registro por voz e ditado natural, conferência inteligente de listas do WhatsApp e persistência local segura (sem backend).',
+            'PWA offline para gerenciar figurinhas repetidas e faltantes da Copa do Mundo 2026. Permite marcar itens por voz, cruzar listas coladas do WhatsApp e guarda todos os dados localmente no navegador, sem depender de servidor.',
           githubUrl: 'https://github.com/joaofr-tech/Album26',
           liveUrl: 'https://pwa-album-copa-sdd.jf756061.workers.dev',
         },
@@ -110,7 +110,7 @@ export const translations = {
           title: 'API CNAB File Reader: Processamento e Conciliação Financeira',
           tags: ['Backend', 'Java', 'Spring Boot', 'Spring Data JPA', 'PostgreSQL'],
           description:
-            'Microsserviço de processamento em lote e conciliação bancária de arquivos textuais no padrão CNAB. Realiza upload, parsing posicional dos registros, normalização de dados financeiros e persistência relacional no PostgreSQL com endpoints REST de consulta.',
+            'API em Spring Boot para importar e processar arquivos bancários CNAB em texto (.txt). Faz o parsing posicional das linhas, padroniza valores e datas, grava as transações no PostgreSQL e expõe endpoints para consulta e conciliação financeira.',
           githubUrl: 'https://github.com/joaofr-tech/api-cnab-file-reader',
         },
       ] as ProjectData[],
@@ -119,7 +119,7 @@ export const translations = {
       kicker: '03 / ferramentas',
       title: 'Tecnologias que fazem parte da minha rotina.',
       subtitle:
-        'Sem bingo de logos. Uma visão direta das ferramentas, linguagens e plataformas que utilizo para projetar e construir software.',
+        'As tecnologias e ambientes que utilizo no dia a dia para desenvolver serviços, tratar dados e automatizar tarefas.',
       categories: [
         {
           category: 'Backend & Nuvem',
@@ -152,7 +152,7 @@ export const translations = {
           slug: 'construindo-agente-ia-local-pydanticai-ollama',
           title: 'Construindo um Agente de IA 100% Local com PydanticAI e Ollama',
           summary:
-            'Guia prático para criar um agente autônomo rodando 100% localmente com Ollama e PydanticAI, integrando modelo, system prompt e ferramentas sem custos de API.',
+            'Como configurar um agente autônomo no computador usando Ollama e PydanticAI, conectando chamadas de funções e prompts customizados sem enviar dados para a nuvem.',
           readTime: '3 min de leitura',
           date: 'Setembro de 2026',
           author: 'João Francisco',
@@ -163,7 +163,7 @@ export const translations = {
           slug: 'como-usar-claude-code-gratuitamente',
           title: 'Como eu uso o Claude Code gratuitamente?',
           summary:
-            'Passo a passo prático para configurar o Claude Code sem custos utilizando o Free Claude Code e OpenRouter, com solução definitiva para o erro de cache retido.',
+            'Como usar o Claude Code no terminal conectando chaves do OpenRouter com modelos gratuitos, além de corrigir o problema de travamento por cache retido.',
           readTime: '3 min de leitura',
           date: 'Setembro de 2026',
           author: 'João Francisco',
@@ -174,8 +174,8 @@ export const translations = {
     },
     certifications: {
       kicker: '05 / certificações',
-      title: 'Formação continuada e proficiência comprovada.',
-      subtitle: 'Certificações técnicas e acadêmicas com links diretos de emissão e credenciamento.',
+      title: 'Certificações e credenciais técnicas.',
+      subtitle: 'Cursos e exames concluídos com links diretos para validação do certificado.',
       verifyBtn: 'Verificar',
       items: [
         {
@@ -226,12 +226,12 @@ export const translations = {
       kicker: 'joão francisco / software engineering & data',
       headline: 'Software engineering focused on backend, data, and automation.',
       description:
-        'Software Engineering student at PUC Minas. I develop end-to-end applications with Spring Boot and JavaScript, pairing solid backend fundamentals with data pipelines and intelligent agents.',
+        'Software Engineering student at PUC Minas. I build services with Spring Boot and interfaces in JavaScript, focusing on data pipelines and local agent automation.',
       featured: {
         kicker: 'featured / autonomous agent',
         title: 'EstágioBot AI — Autonomous Agent for Job Hunting',
         description:
-          'Autonomous agent powered by Google Antigravity CLI that continuously tracks software engineering, data, and AI internship openings. Automatically filters compatible opportunities, feeds a minimalist local dashboard with audit metrics, and dispatches email alerts.',
+          'Agent built with Google Antigravity CLI to crawl tech internship openings. It filters opportunities by technical criteria, logs metrics to a local dashboard, and sends email alerts when new positions appear.',
         tags: ['AI Agents', 'Google Antigravity CLI', 'Node.js', 'React', 'PowerShell'],
         repoBtn: 'Repository on GitHub',
       },
@@ -240,14 +240,14 @@ export const translations = {
       kicker: '01 / about',
       title: 'How I think about and approach building software.',
       subtitle: '',
-      p1: 'I am a Software Engineering student at Pontifícia Universidade Católica de Minas Gerais (PUC Minas). My background and studies focus on building reliable, complete architectures, combining robust backends in Java & Spring Boot with modern frontends in React.',
+      p1: 'I study Software Engineering at PUC Minas. Day to day, I focus on building services in Java and Spring Boot backed by relational databases, connecting those APIs to direct web interfaces in JavaScript.',
       p2: 'I have a strong interest in Data Engineering with batch/streaming processing, multi-layer architectures (Bronze, Silver, and Gold), and columnar formats like Parquet, alongside the practical use of Autonomous AI Agents for real-world automation.',
     },
     projects: {
       kicker: '02 / projects',
-      title: 'Applications, pipelines, and tools built for production.',
+      title: 'Projects built and maintained.',
       subtitle:
-        'End-to-end solutions emphasizing clean architecture, efficient data processing, and open-source code on GitHub.',
+        'Open-source on GitHub, focusing on data flows, structured APIs, and financial reconciliation.',
       liveBtn: 'Live Demo',
       codeBtn: 'Code',
       items: [
@@ -255,28 +255,28 @@ export const translations = {
           title: 'Cloud Data Pipeline: Medallion Architecture with Azure & Python',
           tags: ['Data Engineering', 'Azure Blob Storage', 'Python', 'Pandas & Parquet', 'SQL'],
           description:
-            'End-to-end data pipeline implementing the Medallion Architecture (Bronze, Silver, and Gold). Extracts real-time exchange rates via REST API, stores raw partitioned payloads in Azure Blob Storage, cleans and converts to columnar Parquet, and ingests into an analytical SQL database with queries for moving averages and volatility metrics.',
+            'Three-tier pipeline (Bronze, Silver, and Gold) consuming currency exchange rates from a REST API. Partitions raw payloads into Azure Blob Storage, transforms clean records into columnar Parquet, and populates analytical SQL tables for moving averages and volatility.',
           githubUrl: 'https://github.com/joaofr-tech/cloud-data-pipeline-azure',
         },
         {
           title: 'Real-Time Chat: Instant Messaging with Spring Boot & WebSocket',
           tags: ['Backend', 'Java', 'Spring Boot', 'WebSocket', 'STOMP & SockJS'],
           description:
-            'Low-latency bidirectional instant messaging application built with Java and Spring Boot. Features a pub/sub architecture using the STOMP protocol, SockJS fallback, and an in-memory message broker routing communications across chat rooms.',
+            'Chat service in Java with Spring Boot and WebSockets. Uses the STOMP protocol over an in-memory broker to route messages across rooms, featuring SockJS fallback for browser compatibility.',
           githubUrl: 'https://github.com/joaofr-tech/chat-em-tempo-real',
         },
         {
           title: 'ETL Pipeline with Medallion Architecture & Data Enrichment',
           tags: ['Data Engineering', 'Python', 'PostgreSQL', 'Docker'],
           description:
-            'Three-tier architecture (Bronze, Silver, and Gold) for processing and enriching records via public API. Converts raw data into optimized Parquet and populates a PostgreSQL database running on Docker for relational analytics.',
+            'Python pipeline querying a public registry API, validating records, and structuring them across Bronze, Silver, and Gold tiers. Outputs Parquet files and loads a containerized PostgreSQL database on Docker.',
           githubUrl: 'https://github.com/joaofr-tech/ETL-medalion-architecture',
         },
         {
           title: 'Album26 — World Cup 2026 Sticker Tracker',
           tags: ['Frontend', 'PWA / Mobile', 'JavaScript', 'Cloudflare Workers'],
           description:
-            'Mobile-first offline PWA to manage sticker collections for World Cup 2026. Features voice input, intelligent WhatsApp list cross-checking, and secure local persistence with zero backend dependency.',
+            'Offline PWA to track duplicate and missing stickers for the 2026 World Cup. Allows voice logging, WhatsApp list cross-referencing, and stores all data locally in the browser without depending on a server.',
           githubUrl: 'https://github.com/joaofr-tech/Album26',
           liveUrl: 'https://pwa-album-copa-sdd.jf756061.workers.dev',
         },
@@ -284,7 +284,7 @@ export const translations = {
           title: 'CNAB File Reader API: Financial Processing & Reconciliation',
           tags: ['Backend', 'Java', 'Spring Boot', 'Spring Data JPA', 'PostgreSQL'],
           description:
-            'Batch processing and bank reconciliation microservice for text files adhering to the CNAB standard. Implements file upload, positional record parsing, financial data normalization, and relational persistence in PostgreSQL with REST query endpoints.',
+            'Spring Boot API to import and process banking CNAB text files (.txt). Performs positional line parsing, standardizes amounts and dates, saves transactions in PostgreSQL, and exposes REST endpoints for reconciliation.',
           githubUrl: 'https://github.com/joaofr-tech/api-cnab-file-reader',
         },
       ] as ProjectData[],
@@ -293,7 +293,7 @@ export const translations = {
       kicker: '03 / toolbox',
       title: 'Technologies that show up in the work.',
       subtitle:
-        'Not logo bingo. Just a direct overview of the tools, languages, and platforms I use to design and build software.',
+        'The technologies and environments I use daily to build services, process data, and automate workflows.',
       categories: [
         {
           category: 'Backend & Cloud',
@@ -326,7 +326,7 @@ export const translations = {
           slug: 'construindo-agente-ia-local-pydanticai-ollama',
           title: 'Building a 100% Local AI Agent with PydanticAI & Ollama',
           summary:
-            'Practical guide to building an autonomous agent running entirely locally with Ollama and PydanticAI, integrating system prompt, model, and custom tools with zero API costs.',
+            'How to configure an autonomous agent locally using Ollama and PydanticAI, wiring function calls and custom prompts without sending data to the cloud.',
           readTime: '3 min read',
           date: 'September 2026',
           author: 'João Francisco',
@@ -337,7 +337,7 @@ export const translations = {
           slug: 'como-usar-claude-code-gratuitamente',
           title: 'How I use Claude Code for free?',
           summary:
-            'Step-by-step walkthrough to set up Claude Code without subscription costs using Free Claude Code and OpenRouter, with a permanent fix for retained cache errors.',
+            'How to use Claude Code in the terminal connecting OpenRouter keys with free models, along with fixing the retained-cache hang.',
           readTime: '3 min read',
           date: 'September 2026',
           author: 'João Francisco',
@@ -348,8 +348,8 @@ export const translations = {
     },
     certifications: {
       kicker: '05 / certifications',
-      title: 'Continuous learning and verified proficiency.',
-      subtitle: 'Technical and academic credentials with direct verification links.',
+      title: 'Certifications & technical credentials.',
+      subtitle: 'Completed courses and exams with direct verification links.',
       verifyBtn: 'Verify',
       items: [
         {
