@@ -11,7 +11,7 @@ const projects: Project[] = [
     title: 'EstágioBot AI — Agente Autônomo para Busca de Vagas',
     tags: ['Agentes de IA', 'Google Antigravity CLI', 'Node.js', 'React', 'PowerShell'],
     impactDescription:
-      'Agente autônomo baseado no Google Antigravity CLI que realiza buscas contínuas por vagas de estágio em Engenharia de Software, Dados e Inteligência Artificial. Filtra automaticamente oportunidades compatíveis com turno matutino, alimenta um dashboard local minimalista com auditoria e métricas de varredura, e dispara notificações por e-mail em React sempre que novas vagas são encontradas.',
+      'Agente autônomo baseado no Google Antigravity CLI que realiza buscas contínuas por vagas de estágio em Engenharia de Software, Dados e Inteligência Artificial. Filtra automaticamente oportunidades compatíveis, alimenta um dashboard local minimalista com auditoria e métricas de varredura, e dispara notificações por e-mail em React sempre que novas vagas são encontradas.',
     githubUrl: 'https://github.com/joaofr-tech/estagio-bot-ai',
   },
   {
@@ -22,11 +22,11 @@ const projects: Project[] = [
     githubUrl: 'https://github.com/joaofr-tech/cloud-data-pipeline-azure',
   },
   {
-    title: 'Movie App — Catálogo e Busca de Filmes com TMDB',
-    tags: ['Frontend', 'React 19', 'Vite', 'TMDB API', 'Context API'],
+    title: 'Chat em Tempo Real: Mensageria Instantânea com Spring Boot & WebSocket',
+    tags: ['Backend', 'Java', 'Spring Boot', 'WebSocket', 'STOMP & SockJS'],
     impactDescription:
-      'Aplicação web moderna e responsiva para exploração e busca de filmes em tempo real integrada à API TMDB. Conta com gerenciamento de estado global, persistência de favoritos no localStorage com feedback visual e interface Dark Mode adaptada para múltiplos dispositivos.',
-    githubUrl: 'https://github.com/joaofr-tech/movie-react-app',
+      'Aplicação de mensagens instantâneas e bidirecionais de baixa latência construída em Java com Spring Boot. Implementa arquitetura pub/sub com protocolo STOMP, fallback com SockJS e broker interno de mensagens para roteamento entre salas de bate-papo.',
+    githubUrl: 'https://github.com/joaofr-tech/chat-em-tempo-real',
   },
   {
     title: 'Pipeline ETL com Arquitetura Medalhão e Enriquecimento de Dados',
@@ -44,12 +44,11 @@ const projects: Project[] = [
     liveUrl: 'https://pwa-album-copa-sdd.jf756061.workers.dev',
   },
   {
-    title: 'Habitus — Consolidação de Hábitos e Metas',
-    tags: ['Frontend', 'React', 'TypeScript', 'Cloudflare Pages'],
+    title: 'API CNAB File Reader: Processamento e Conciliação Financeira',
+    tags: ['Backend', 'Java', 'Spring Boot', 'Spring Data JPA', 'PostgreSQL'],
     impactDescription:
-      'Aplicação web minimalista para calcular e acompanhar a consistência de hábitos e metas pessoais. Permite registros por oportunidade, métricas de adesão e persistência 100% local via localStorage.',
-    githubUrl: 'https://github.com/joaofr-tech/kpi-habits',
-    liveUrl: 'https://kpi-habits.jf756061.workers.dev/',
+      'Microsserviço de processamento em lote e conciliação bancária de arquivos textuais no padrão CNAB. Realiza upload, parsing posicional dos registros, normalização de dados financeiros e persistência relacional no PostgreSQL com endpoints REST de consulta.',
+    githubUrl: 'https://github.com/joaofr-tech/api-cnab-file-reader',
   },
 ]
 
