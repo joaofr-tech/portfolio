@@ -52,7 +52,7 @@ export const translations = {
       kicker: 'joão francisco / engenharia de software & dados',
       headline: 'Engenharia de software com foco em backend, dados e automação.',
       description:
-        'Estudante de Engenharia de Software na PUC Minas. Construo serviços com Spring Boot e interfaces em JavaScript, com foco no fluxo de dados em pipelines e em automação com agentes locais.',
+        'Estudante de Engenharia de Software na PUC Minas. Construo serviços com Spring Boot e interfaces em JavaScript, com foco no fluxo de dados em pipelines e em automação com agentes.',
       featured: {
         kicker: 'destaque / agente autônomo',
         title: 'EstágioBot AI — Agente Autônomo para Busca de Vagas',
@@ -226,7 +226,7 @@ export const translations = {
       kicker: 'joão francisco / software engineering & data',
       headline: 'Software engineering focused on backend, data, and automation.',
       description:
-        'Software Engineering student at PUC Minas. I build services with Spring Boot and interfaces in JavaScript, focusing on data pipelines and local agent automation.',
+        'Software Engineering student at PUC Minas. I build services with Spring Boot and interfaces in JavaScript, focusing on data pipelines and agent automation.',
       featured: {
         kicker: 'featured / autonomous agent',
         title: 'EstágioBot AI — Autonomous Agent for Job Hunting',
