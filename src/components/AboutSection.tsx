@@ -9,7 +9,7 @@ export function AboutSection() {
         <header className="section-header">
           <p className="mono">{t.about.kicker}</p>
           <h2>{t.about.title}</h2>
-          <p className="section-intro">{t.about.subtitle}</p>
+          {t.about.subtitle ? <p className="section-intro">{t.about.subtitle}</p> : null}
         </header>
 
         <div className="about-content">

@@ -50,9 +50,9 @@ export const translations = {
     },
     hero: {
       kicker: 'joão francisco / engenharia de software & dados',
-      headline: 'Construo sistemas robustos, pipelines de dados e agentes autônomos.',
+      headline: 'Engenharia de software com foco em backend, dados e automação.',
       description:
-        'Estudante de Engenharia de Software na PUC Minas. Desenvolvo aplicações completas com Spring Boot e React, aliando uma base sólida de backend e infraestrutura a pipelines analíticos de dados e agentes inteligentes.',
+        'Estudante de Engenharia de Software na PUC Minas. Desenvolvo aplicações completas com Spring Boot e JavaScript, aliando uma base sólida de backend a pipelines de dados e agentes inteligentes.',
       featured: {
         kicker: 'destaque / agente autônomo',
         title: 'EstágioBot AI — Agente Autônomo para Busca de Vagas',
@@ -64,9 +64,8 @@ export const translations = {
     },
     about: {
       kicker: '01 / sobre',
-      title: 'Fundamentos sólidos e engenharia orientada a impacto.',
-      subtitle:
-        'Da concepção de modelos relacionais e pipelines de dados ao desenvolvimento de interfaces limpas e agentes autônomos.',
+      title: 'Como eu penso e abordo a construção de software.',
+      subtitle: '',
       p1: 'Sou estudante de Engenharia de Software na Pontifícia Universidade Católica de Minas Gerais (PUC Minas). Minha formação e estudos são direcionados para a construção de arquiteturas completas e confiáveis, integrando backend robusto em Java & Spring Boot a aplicações modernas em React.',
       p2: 'Tenho grande interesse em Engenharia de Dados com processamento batch/streaming, arquiteturas em camadas (Bronze, Silver e Gold) e formatos colunares como Parquet, além do uso prático de Agentes Autônomos de IA para resolver problemas do mundo real, como extração de dados e automação de rotinas.',
     },
@@ -225,9 +224,9 @@ export const translations = {
     },
     hero: {
       kicker: 'joão francisco / software engineering & data',
-      headline: 'I build robust systems, data pipelines, and autonomous agents.',
+      headline: 'Software engineering focused on backend, data, and automation.',
       description:
-        'Software Engineering student at PUC Minas. I develop end-to-end applications with Spring Boot and React, pairing solid backend fundamentals and infrastructure with analytical data pipelines and intelligent agents.',
+        'Software Engineering student at PUC Minas. I develop end-to-end applications with Spring Boot and JavaScript, pairing solid backend fundamentals with data pipelines and intelligent agents.',
       featured: {
         kicker: 'featured / autonomous agent',
         title: 'EstágioBot AI — Autonomous Agent for Job Hunting',
@@ -239,9 +238,8 @@ export const translations = {
     },
     about: {
       kicker: '01 / about',
-      title: 'Solid fundamentals and impact-driven engineering.',
-      subtitle:
-        'From relational data models and data pipelines to clean interfaces and autonomous agents.',
+      title: 'How I think about and approach building software.',
+      subtitle: '',
       p1: 'I am a Software Engineering student at Pontifícia Universidade Católica de Minas Gerais (PUC Minas). My background and studies focus on building reliable, complete architectures, combining robust backends in Java & Spring Boot with modern frontends in React.',
       p2: 'I have a strong interest in Data Engineering with batch/streaming processing, multi-layer architectures (Bronze, Silver, and Gold), and columnar formats like Parquet, alongside the practical use of Autonomous AI Agents for real-world automation.',
     },
