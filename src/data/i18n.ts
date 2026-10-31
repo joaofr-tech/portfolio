@@ -64,7 +64,7 @@ export const translations = {
     },
     about: {
       kicker: '01 / sobre',
-      title: 'Como eu penso e abordo a construção de software.',
+      title: 'Minha trajetoria e interesses.',
       subtitle: '',
       p1: 'Curso Engenharia de Software na PUC Minas. No dia a dia, concentro meus estudos na criação de serviços em Java e Spring Boot com bancos relacionais, conectando essas APIs a interfaces diretas em JavaScript.',
       p2: 'Tenho grande interesse em Engenharia de Dados e em todo o ciclo de vida dos dados, desde extração até transformação com arquiteturas em camadas (Bronze, Silver e Gold) e disponibilização em bancos OLAP, além do uso prático de Agentes Autônomos de IA para resolver problemas do mundo real, como extração de dados e automação de rotinas.',
@@ -238,7 +238,7 @@ export const translations = {
     },
     about: {
       kicker: '01 / about',
-      title: 'How I think about and approach building software.',
+      title: 'My background and interests.',
       subtitle: '',
       p1: 'I study Software Engineering at PUC Minas. Day to day, I focus on building services in Java and Spring Boot backed by relational databases, connecting those APIs to direct web interfaces in JavaScript.',
       p2: 'I have a strong interest in Data Engineering and the entire data lifecycle, from extraction to transformation with multi-layer architectures (Bronze, Silver, and Gold) and delivery to OLAP databases, alongside the practical use of Autonomous AI Agents for real-world automation.',
