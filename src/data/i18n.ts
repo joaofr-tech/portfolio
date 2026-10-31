@@ -67,13 +67,13 @@ export const translations = {
       title: 'Como eu penso e abordo a construção de software.',
       subtitle: '',
       p1: 'Curso Engenharia de Software na PUC Minas. No dia a dia, concentro meus estudos na criação de serviços em Java e Spring Boot com bancos relacionais, conectando essas APIs a interfaces diretas em JavaScript.',
-      p2: 'Tenho grande interesse em Engenharia de Dados com processamento batch/streaming, arquiteturas em camadas (Bronze, Silver e Gold) e formatos colunares como Parquet, além do uso prático de Agentes Autônomos de IA para resolver problemas do mundo real, como extração de dados e automação de rotinas.',
+      p2: 'Tenho grande interesse em Engenharia de Dados e em todo o ciclo de vida dos dados, desde extração até transformação com arquiteturas em camadas (Bronze, Silver e Gold) e disponibilização em bancos OLAP, além do uso prático de Agentes Autônomos de IA para resolver problemas do mundo real, como extração de dados e automação de rotinas.',
     },
     projects: {
       kicker: '02 / projetos',
       title: 'Projetos que construí e mantenho.',
       subtitle:
-        'Código aberto no GitHub, com foco em fluxo de dados, APIs estruturadas e conciliação financeira.',
+        'Código aberto no GitHub, com foco em fluxo de dados, APIs estruturadas e interfaces intuitivas.',
       liveBtn: 'Demonstração',
       codeBtn: 'Código',
       items: [
@@ -241,13 +241,13 @@ export const translations = {
       title: 'How I think about and approach building software.',
       subtitle: '',
       p1: 'I study Software Engineering at PUC Minas. Day to day, I focus on building services in Java and Spring Boot backed by relational databases, connecting those APIs to direct web interfaces in JavaScript.',
-      p2: 'I have a strong interest in Data Engineering with batch/streaming processing, multi-layer architectures (Bronze, Silver, and Gold), and columnar formats like Parquet, alongside the practical use of Autonomous AI Agents for real-world automation.',
+      p2: 'I have a strong interest in Data Engineering and the entire data lifecycle, from extraction to transformation with multi-layer architectures (Bronze, Silver, and Gold) and delivery to OLAP databases, alongside the practical use of Autonomous AI Agents for real-world automation.',
     },
     projects: {
       kicker: '02 / projects',
       title: 'Projects built and maintained.',
       subtitle:
-        'Open-source on GitHub, focusing on data flows, structured APIs, and financial reconciliation.',
+        'Open-source on GitHub, focusing on data flows, structured APIs, and intuitive interfaces.',
       liveBtn: 'Live Demo',
       codeBtn: 'Code',
       items: [
