@@ -124,11 +124,11 @@ export const translations = {
       categories: [
         {
           category: 'Backend & Nuvem',
-          skills: ['Java', 'Spring Boot', 'Spring Security', 'Python', 'Azure Blob Storage', 'PostgreSQL', 'APIs RESTful'],
+          skills: ['Java', 'Spring Boot', 'Python', 'Spring Security', 'Azure Blob Storage', 'PostgreSQL', 'APIs RESTful'],
         },
         {
           category: 'Engenharia de Dados',
-          skills: ['Arquitetura Medalhão', 'Pipelines ETL', 'Apache Parquet', 'Pandas', 'SQL Analítico', 'Modelagem de Dados'],
+          skills: ['Python', 'Pandas', 'Arquitetura Medalhão', 'Pipelines ETL', 'Apache Parquet', 'SQL Analítico', 'Modelagem de Dados'],
         },
         {
           category: 'Frontend & Web',
@@ -299,11 +299,11 @@ export const translations = {
       categories: [
         {
           category: 'Backend & Cloud',
-          skills: ['Java', 'Spring Boot', 'Spring Security', 'Python', 'Azure Blob Storage', 'PostgreSQL', 'RESTful APIs'],
+          skills: ['Java', 'Spring Boot', 'Python', 'Spring Security', 'Azure Blob Storage', 'PostgreSQL', 'RESTful APIs'],
         },
         {
           category: 'Data Engineering',
-          skills: ['Medallion Architecture', 'ETL Pipelines', 'Apache Parquet', 'Pandas', 'Analytical SQL', 'Data Modeling'],
+          skills: ['Python', 'Pandas', 'Medallion Architecture', 'ETL Pipelines', 'Apache Parquet', 'Analytical SQL', 'Data Modeling'],
         },
         {
           category: 'Frontend & Web',
