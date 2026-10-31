@@ -86,11 +86,11 @@ export const translations = {
           githubUrl: 'https://github.com/joaofr-tech/cloud-data-pipeline-azure',
         },
         {
-          title: 'Movie App — Catálogo e Busca de Filmes com TMDB',
-          tags: ['Frontend', 'React 19', 'Vite', 'TMDB API', 'Context API'],
+          title: 'Chat em Tempo Real: Mensageria Instantânea com Spring Boot & WebSocket',
+          tags: ['Backend', 'Java', 'Spring Boot', 'WebSocket', 'STOMP & SockJS'],
           description:
-            'Aplicação web moderna e responsiva para exploração e busca de filmes em tempo real integrada à API TMDB. Conta com gerenciamento de estado global, persistência de favoritos no localStorage com feedback visual e interface adaptada para múltiplos dispositivos.',
-          githubUrl: 'https://github.com/joaofr-tech/movie-react-app',
+            'Aplicação de mensagens instantâneas e bidirecionais de baixa latência construída em Java com Spring Boot. Implementa arquitetura pub/sub com protocolo STOMP, fallback com SockJS e broker interno de mensagens para roteamento entre salas de bate-papo.',
+          githubUrl: 'https://github.com/joaofr-tech/chat-em-tempo-real',
         },
         {
           title: 'Pipeline ETL com Arquitetura Medalhão e Enriquecimento de Dados',
@@ -108,12 +108,11 @@ export const translations = {
           liveUrl: 'https://pwa-album-copa-sdd.jf756061.workers.dev',
         },
         {
-          title: 'Habitus — Consolidação de Hábitos e Metas',
-          tags: ['Frontend', 'React', 'TypeScript', 'Cloudflare Pages'],
+          title: 'API CNAB File Reader: Processamento e Conciliação Financeira',
+          tags: ['Backend', 'Java', 'Spring Boot', 'Spring Data JPA', 'PostgreSQL'],
           description:
-            'Aplicação web minimalista para calcular e acompanhar a consistência de hábitos e metas pessoais. Permite registros por oportunidade, métricas de adesão e persistência 100% local via localStorage.',
-          githubUrl: 'https://github.com/joaofr-tech/kpi-habits',
-          liveUrl: 'https://kpi-habits.jf756061.workers.dev/',
+            'Microsserviço de processamento em lote e conciliação bancária de arquivos textuais no padrão CNAB. Realiza upload, parsing posicional dos registros, normalização de dados financeiros e persistência relacional no PostgreSQL com endpoints REST de consulta.',
+          githubUrl: 'https://github.com/joaofr-tech/api-cnab-file-reader',
         },
       ] as ProjectData[],
     },
@@ -262,11 +261,11 @@ export const translations = {
           githubUrl: 'https://github.com/joaofr-tech/cloud-data-pipeline-azure',
         },
         {
-          title: 'Movie App — Film Catalog & Search with TMDB',
-          tags: ['Frontend', 'React 19', 'Vite', 'TMDB API', 'Context API'],
+          title: 'Real-Time Chat: Instant Messaging with Spring Boot & WebSocket',
+          tags: ['Backend', 'Java', 'Spring Boot', 'WebSocket', 'STOMP & SockJS'],
           description:
-            'Modern, responsive web application for real-time movie exploration and search integrated with the TMDB API. Features global state management, bookmark persistence in localStorage with visual feedback, and interface adapted for multiple devices.',
-          githubUrl: 'https://github.com/joaofr-tech/movie-react-app',
+            'Low-latency bidirectional instant messaging application built with Java and Spring Boot. Features a pub/sub architecture using the STOMP protocol, SockJS fallback, and an in-memory message broker routing communications across chat rooms.',
+          githubUrl: 'https://github.com/joaofr-tech/chat-em-tempo-real',
         },
         {
           title: 'ETL Pipeline with Medallion Architecture & Data Enrichment',
@@ -284,12 +283,11 @@ export const translations = {
           liveUrl: 'https://pwa-album-copa-sdd.jf756061.workers.dev',
         },
         {
-          title: 'Habitus — Consistency & Habit Tracking',
-          tags: ['Frontend', 'React', 'TypeScript', 'Cloudflare Pages'],
+          title: 'CNAB File Reader API: Financial Processing & Reconciliation',
+          tags: ['Backend', 'Java', 'Spring Boot', 'Spring Data JPA', 'PostgreSQL'],
           description:
-            'Minimalist web application to calculate and track personal habit consistency and goals. Allows per-opportunity logs, adherence metrics, and 100% client-side persistence via localStorage.',
-          githubUrl: 'https://github.com/joaofr-tech/kpi-habits',
-          liveUrl: 'https://kpi-habits.jf756061.workers.dev/',
+            'Batch processing and bank reconciliation microservice for text files adhering to the CNAB standard. Implements file upload, positional record parsing, financial data normalization, and relational persistence in PostgreSQL with REST query endpoints.',
+          githubUrl: 'https://github.com/joaofr-tech/api-cnab-file-reader',
         },
       ] as ProjectData[],
     },
