@@ -57,7 +57,7 @@ export const translations = {
         kicker: 'destaque / agente autônomo',
         title: 'EstágioBot AI — Agente Autônomo para Busca de Vagas',
         description:
-          'Agente autônomo baseado no Google Antigravity CLI que realiza buscas contínuas por vagas de estágio em Engenharia de Software, Dados e Inteligência Artificial. Filtra automaticamente oportunidades compatíveis com o turno matutino, alimenta um dashboard local minimalista com auditoria de métricas e dispara alertas por e-mail.',
+          'Agente autônomo baseado no Google Antigravity CLI que realiza buscas contínuas por vagas de estágio em Engenharia de Software, Dados e Inteligência Artificial. Filtra automaticamente oportunidades compatíveis, alimenta um dashboard local minimalista com auditoria de métricas e dispara alertas por e-mail.',
         tags: ['Agentes de IA', 'Google Antigravity CLI', 'Node.js', 'React', 'PowerShell'],
         repoBtn: 'Repositório no GitHub',
       },
@@ -232,7 +232,7 @@ export const translations = {
         kicker: 'featured / autonomous agent',
         title: 'EstágioBot AI — Autonomous Agent for Job Hunting',
         description:
-          'Autonomous agent powered by Google Antigravity CLI that continuously tracks software engineering, data, and AI internship openings. Automatically filters opportunities compatible with morning study schedules, feeds a minimalist local dashboard with audit metrics, and dispatches email alerts.',
+          'Autonomous agent powered by Google Antigravity CLI that continuously tracks software engineering, data, and AI internship openings. Automatically filters compatible opportunities, feeds a minimalist local dashboard with audit metrics, and dispatches email alerts.',
         tags: ['AI Agents', 'Google Antigravity CLI', 'Node.js', 'React', 'PowerShell'],
         repoBtn: 'Repository on GitHub',
       },
