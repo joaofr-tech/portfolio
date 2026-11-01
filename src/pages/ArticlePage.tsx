@@ -2,6 +2,7 @@ import type { ComponentType } from 'react'
 import type { Article } from '../data/articles'
 import { useLanguage } from '../context/LanguageContext'
 import ClaudeCodeArticle from '../components/articles/ClaudeCodeArticle'
+import JobSearchAgentArticle from '../components/articles/JobSearchAgentArticle'
 import LocalAiAgentArticle from '../components/articles/LocalAiAgentArticle'
 
 interface ArticlePageProps {
@@ -10,6 +11,7 @@ interface ArticlePageProps {
 }
 
 const ARTICLE_COMPONENTS: Record<string, ComponentType> = {
+  'construi-um-agente-que-busca-vagas-diariamente': JobSearchAgentArticle,
   'como-usar-claude-code-gratuitamente': ClaudeCodeArticle,
   'construindo-agente-ia-local-pydanticai-ollama': LocalAiAgentArticle,
 }

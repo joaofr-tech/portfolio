@@ -149,6 +149,17 @@ export const translations = {
       subtitle: 'Artigos sobre meus aprendizados, descobertas e reflexões.',
       items: [
         {
+          slug: 'construi-um-agente-que-busca-vagas-diariamente',
+          title: 'Construí um agente que busca vagas para mim diariamente',
+          summary:
+            'Como transformei uma busca manual e exaustiva por estágio em um agente autônomo com suíte de testes, inicialização via SO, observabilidade e métricas de candidatura.',
+          readTime: '4 min de leitura',
+          date: 'Outubro de 2026',
+          author: 'João Francisco',
+          coverImage: asset('job-search-agent-cover.jpg'),
+          topicLabel: 'Agentes & Automação',
+        },
+        {
           slug: 'construindo-agente-ia-local-pydanticai-ollama',
           title: 'Construindo um Agente de IA 100% Local com PydanticAI e Ollama',
           summary:
@@ -322,6 +333,17 @@ export const translations = {
       title: 'How I think.',
       subtitle: 'Articles about my learnings, discoveries, and technical notes.',
       items: [
+        {
+          slug: 'construi-um-agente-que-busca-vagas-diariamente',
+          title: 'I built an agent that searches jobs for me daily',
+          summary:
+            'How I turned an exhausting manual internship search into an autonomous agent with a test suite, OS startup integration, observability, and application metrics.',
+          readTime: '4 min read',
+          date: 'October 2026',
+          author: 'João Francisco',
+          coverImage: asset('job-search-agent-cover.jpg'),
+          topicLabel: 'Agents & Automation',
+        },
         {
           slug: 'construindo-agente-ia-local-pydanticai-ollama',
           title: 'Building a 100% Local AI Agent with PydanticAI & Ollama',
